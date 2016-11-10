@@ -27,6 +27,7 @@ public class LoginAction extends ActionSupport {
     @Override
     public String execute() throws Exception {
         User userTemp = userService.findByName(user.getUserName(),user.getPwd());
+
         if(userTemp!=null){
             return SUCCESS;
         }else{

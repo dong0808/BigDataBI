@@ -3,6 +3,7 @@ package com.hfut.zngl.entity;
 /**
  * Created by 东东 on 2016/11/8.
  */
+
 public class User {
 
     private int userID;

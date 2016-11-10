@@ -2,8 +2,8 @@
 <!DOCTYPE hibernate-mapping PUBLIC
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<hibernate-mapping package="com.hfut.zngl.entity">
-    <class name="User" table="userInfo">
+<hibernate-mapping>
+    <class name="com.hfut.zngl.entity.User" table="userinfo">
         <id name="userID">
             <generator class="identity"/>
         </id>

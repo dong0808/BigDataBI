@@ -73,10 +73,10 @@ public class UserDaoImpl implements UserDao{
         try{
             session = currentSession();
             Transaction tx = session.beginTransaction();
-            String hsql = "from User u where u.userName = :name and u.pwd = :pwd";
+            String hsql = "from User u where u.userName = :uname and u.pwd = :upwd";
             Query query = session.createQuery(hsql);
-            query.setParameter("name",name);
-            query.setParameter("pwd",pwd);
+            query.setParameter("uname",name);
+            query.setParameter("upwd",pwd);
             user = (User)query.uniqueResult();
             tx.commit();
         }catch(HibernateException e){
