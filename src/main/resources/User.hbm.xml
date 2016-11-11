@@ -6,8 +6,8 @@
     <class name="com.hfut.zngl.entity.User" table="userinfo">
         <id name="userID">
             <generator class="identity"/>
-        </id>
         <property name="userName"/>
+    </id>
         <property name="pwd"/>
     </class>
 </hibernate-mapping>
