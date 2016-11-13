@@ -9,6 +9,7 @@ public class User {
     private int userID;
     private String userName;
     private String pwd;
+    private int userType;
 
     public int getUserID() {
         return userID;
@@ -32,5 +33,13 @@ public class User {
 
     public void setPwd(String pwd) {
         this.pwd = pwd;
+    }
+
+    public int getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 }
