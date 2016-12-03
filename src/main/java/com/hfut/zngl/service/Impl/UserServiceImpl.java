@@ -14,10 +14,11 @@ public class UserServiceImpl implements UserService{
         this.userDao = userDao;
     }
 
-    public void add(User user) {
+    public User add(User user) {
         if(userDao.findById(user.getUserID())==null){
             userDao.add(user);
         }
+        return user;
     }
 
     public void update(User user) {

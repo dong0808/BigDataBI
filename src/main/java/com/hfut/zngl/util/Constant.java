@@ -5,7 +5,7 @@ package com.hfut.zngl.util;
  */
 public class Constant {
 
-    public static int MANAGER = 0;
-    public static int PROFESSOR = 1;
-    public static int COMMON = 2;
+    public static String MANAGER = "manager";
+    public static String PROFESSOR = "professor";
+    public static String COMMON = "common";
 }

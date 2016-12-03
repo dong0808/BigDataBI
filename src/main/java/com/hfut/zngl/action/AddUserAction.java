@@ -26,12 +26,8 @@ public class AddUserAction extends ActionSupport {
 
     @Override
     public String execute() throws Exception {
-        User userTemp = userService.findByName(user.getUserName(),user.getPwd());
+        userService.add(user);
+        return SUCCESS;
 
-        if(userTemp!=null){
-            return SUCCESS;
-        }else{
-            return ERROR;
-        }
     }
 }

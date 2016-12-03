@@ -12,13 +12,56 @@
     <constant name="struts.i18n.encoding" value="UTF-8"/>
 
     <!--suppress Struts2ModelInspection -->
-    <package name="com.hfut.zngl.action" extends="struts-default">
+    <package name="UserOperationaction" extends="struts-default">
+        <!-- 定义一个拦截器 -->
+        <interceptors>
+            <interceptor name="authority" class="com.hfut.zngl.filter.LoginInterceptor"></interceptor>
+            <!-- 拦截器栈 -->
+            <interceptor-stack name="mydefault">
+                <!--suppress Struts2ModelInspection -->
+                <interceptor-ref name="defaultStack" />
+                <interceptor-ref name="authority" />
+            </interceptor-stack>
+        </interceptors>
+        <!--设置自定义拦截器为默认拦截器-->
+        <default-interceptor-ref name="mydefault"/>
+
+        <!-- 定义全局Result -->
+        <global-results>
+            <!-- 当返回login视图名时，转入/login.jsp页面 -->
+            <result name="login">/WEB-INF/content/login.jsp</result>
+        </global-results>
+
 
         <action name="login" class="com.hfut.zngl.action.LoginAction">
-            <result name="success">/welcome.jsp</result>
-            <result name="error">/error.jsp</result>
-            <result name="input">/login.jsp</result>
+            <result name="success">WEB-INF/content/index.jsp</result>
+            <result name="error">WEB-INF/content/error.jsp</result>
+            <result name="input">WEB-INF/content/login.jsp</result>
         </action>
+
+        <action name="addUser" class="com.hfut.zngl.action.AddUserAction">
+            <result name="success">WEB-INF/content/welcome.jsp</result>
+            <result name="error">WEB-INF/content/error.jsp</result>
+        </action>
+
+        <action name="hrefAction" class="com.hfut.zngl.action.HrefAction">
+            <result name="query">WEB-INF/content/welcome.jsp</result>
+            <result name="count">WEB-INF/content/welcome.jsp</result>
+            <result name="evaluate">WEB-INF/content/welcome.jsp</result>
+            <result name="warning">WEB-INF/content/welcome.jsp</result>
+            <result name="defense">WEB-INF/content/welcome.jsp</result>
+            <result name="userManager">WEB-INF/content/welcome.jsp</result>
+            <result name="loginout">WEB-INF/content/login.jsp</result>
+            <result name="userquery">WEB-INF/content/admin/userQuery.jsp</result>
+
+        </action>
+
+        <!--<action name="*" class="com.hfut.zngl.action.{1}Action">
+            <result name="success">WEB-INF/content/welcome.jsp</result>
+            <result name="error">WEB-INF/content/error.jsp</result>
+        </action>-->
     </package>
+
+
 
 </struts>

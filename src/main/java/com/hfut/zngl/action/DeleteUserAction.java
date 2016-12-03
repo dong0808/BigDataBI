@@ -7,7 +7,7 @@ import com.opensymphony.xwork2.ActionSupport;
 /**
  * Created by 东东 on 2016/11/8.
  */
-public class DeleteAction extends ActionSupport {
+public class DeleteUserAction extends ActionSupport {
 
     private User user;
     private UserService userService;

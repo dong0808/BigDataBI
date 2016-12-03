@@ -1,0 +1,24 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: 东东
+  Date: 2016/11/29
+  Time: 9:52
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="s" uri="/struts-tags"%>
+<html>
+<head>
+    <title>用户管理-管理员</title>
+</head>
+<body>
+<table>
+    <th>选择管理项目</th>
+    <tr><td><a href="<s:url action="hrefAction" method="userQuery">">查询用户</a></td></tr>
+    <tr><td>添加用户</td></td></tr>
+    <tr><td>修改个人信息</td></tr>
+    <tr><td>修改密码</td></tr>
+</table>
+
+</body>
+</html>

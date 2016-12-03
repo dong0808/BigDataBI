@@ -7,8 +7,10 @@
         <id name="userID">
             <generator class="identity"/>
         </id>
-        <property name="userName"/>
-
-        <property name="pwd"/>
+        <property name="userName" type="java.lang.String"/>
+        <property name="pwd" type="java.lang.String"/>
+        <property name="phone" type="java.lang.String"/>
+        <property name="sex" type="java.lang.String"/>
+        <property name="userType" type="java.lang.String"/>
     </class>
 </hibernate-mapping>

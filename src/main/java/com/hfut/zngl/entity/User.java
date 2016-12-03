@@ -9,7 +9,9 @@ public class User {
     private int userID;
     private String userName;
     private String pwd;
-    private int userType;
+    private String phone;
+    private String sex;
+    private String userType;
 
     public int getUserID() {
         return userID;
@@ -35,7 +37,24 @@ public class User {
         this.pwd = pwd;
     }
 
-    public int getUserType() {
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getUserType() {
         return userType;
     }
 
