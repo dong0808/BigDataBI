@@ -29,7 +29,7 @@ public class LoginAction extends ActionSupport {
 
     @Override
     public String execute() throws Exception {
-        User userTemp = userService.findByName(user.getUserName(),user.getPwd());
+        User userTemp = userService.findByName(user.getUserName());
 
         if(userTemp!=null){
             ActionContext ac = ActionContext.getContext();

@@ -26,6 +26,13 @@ public class AddUserAction extends ActionSupport {
 
     @Override
     public String execute() throws Exception {
+        user.setUserID(Integer.valueOf(user.getUserID()));
+        System.out.println(user.getUserID());
+        user.setUserName(user.getUserName());
+        user.setPwd(user.getPwd());
+        user.setUserType(user.getUserType());
+        user.setPhone(user.getPhone());
+        user.setSex(user.getSex());
         userService.add(user);
         return SUCCESS;
 

@@ -12,11 +12,30 @@
     <title>Title</title>
 </head>
 <body>
+    <p align="center">添加用户</p>
     <s:form action="addUser" method="POST">
-        <s:textfield name="user.userName" key="user" value=""/>
-        <s:textfield name="user.pwd" key="pwd" value=""/>
-        <s:select name="user.userType" key="userType" list="{'manager','professor','user'}" multiple="false"/>
-        <s:submit name="addUser" key="addUser"/>
+        <div>
+            <s:textfield label="用户ID" name="user.userID"/>
+        </div>
+
+        <div>
+            <s:textfield label="用户名" name="user.userName"/>
+        </div>
+        <div>
+            <s:textfield label="密码" name="user.pwd"/>
+        </div>
+        <div>
+            <s:select  label="性别" name="user.sex" list="{'男','女'}"/>
+        </div>
+        <div>
+            <s:select label="用户类型" name="user.userType" list="{'manager','professor','common'}" />
+        </div>
+        <div>
+            <s:textfield label="电话" name="user.phone"/>
+        </div>
+        <div>
+            <s:submit value="提交" />
+        </div>
     </s:form>
 +
 </body>

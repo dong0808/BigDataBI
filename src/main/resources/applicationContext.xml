@@ -77,7 +77,17 @@
         <property name="userService" ref="userService"></property>
     </bean>
 
-    <bean id="userManagerAction" class="com.hfut.zngl.action.userManagerAction"></bean>
+    <bean id="updateUserAction" class="com.hfut.zngl.action.UpdateUserAction">
+        <property name="userService" ref="userService"></property>
+    </bean>
+
+    <bean id="userAction" class="com.hfut.zngl.action.userAction">
+        <property name="userService" ref="userService"></property>
+    </bean>
+
+    <bean id="updatePWDAction" class="com.hfut.zngl.action.updatePWDAction">
+        <property name="userService" ref="userService"></property>
+    </bean>
 
 
 </beans>

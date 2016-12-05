@@ -9,6 +9,8 @@ import com.opensymphony.xwork2.ActionSupport;
  */
 public class UpdateUserAction extends ActionSupport {
 
+    public String UPDATAMANAGER = "updateManager";
+
     private User user;
     private UserService userService;
 
@@ -26,12 +28,32 @@ public class UpdateUserAction extends ActionSupport {
 
     @Override
     public String execute() throws Exception {
-        User userTemp = userService.findByName(user.getUserName(),user.getPwd());
 
-        if(userTemp!=null){
-            return SUCCESS;
-        }else{
-            return ERROR;
-        }
+        System.out.println(user.getUserID());
+        System.out.println(user.getPwd());
+        user.setUserID(Integer.valueOf(user.getUserID()));
+        user.setUserName(user.getUserName());
+        user.setPwd(user.getPwd());
+        user.setPhone(user.getPhone());
+        user.setSex(user.getSex());
+        user.setUserType(user.getUserType());
+        userService.update(user);
+        return SUCCESS;
+
+    }
+
+    public String updateManager() throws Exception{
+
+        user.setUserID(Integer.valueOf(user.getUserID()));
+        User u = userService.findById(Integer.valueOf(user.getUserID()));
+        user.setUserName(user.getUserName());
+        user.setPhone(user.getPhone());
+        user.setPwd(u.getPwd());
+        user.setUserType(u.getUserType());
+        user.setSex(user.getSex());
+        userService.update(user);
+
+        return UPDATAMANAGER;
+
     }
 }

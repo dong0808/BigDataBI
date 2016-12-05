@@ -50,11 +50,33 @@
             <result name="evaluate">WEB-INF/content/welcome.jsp</result>
             <result name="warning">WEB-INF/content/welcome.jsp</result>
             <result name="defense">WEB-INF/content/welcome.jsp</result>
-            <result name="userManager">WEB-INF/content/welcome.jsp</result>
+            <result name="userManager">WEB-INF/content/userManager.jsp</result>
             <result name="loginout">WEB-INF/content/login.jsp</result>
             <result name="userquery">WEB-INF/content/admin/userQuery.jsp</result>
+        </action>
+
+        <action name="userAction" class="com.hfut.zngl.action.userAction">
+            <result name="userQuery">WEB-INF/content/admin/userQuery.jsp</result>
+            <result name="userEdit">WEB-INF/content/editUser.jsp</result>
+            <result name="userDelete">WEB-INF/content/welcome.jsp</result>
+            <result name="userAdd">WEB-INF/content/admin/addUser.jsp</result>
+            <result name="managerInfoEdit">WEB-INF/content/admin/editManagerInfo.jsp</result>
+            <result name="updatePWD">WEB-INF/content/updatePWD.jsp</result>
 
         </action>
+
+        <action name="updateUserAction" class="com.hfut.zngl.action.UpdateUserAction">
+            <result name="success">WEB-INF/content/welcome.jsp</result>
+            <result name="updateManager">WEB-INF/content/welcome.jsp</result>
+
+        </action>
+
+        <action name="updatePWDAction" class="com.hfut.zngl.action.updatePWDAction">
+            <result name="success">WEB-INF/content/welcome.jsp</result>
+            <result name="error">WEB-INF/content/error.jsp</result>
+
+        </action>
+
 
         <!--<action name="*" class="com.hfut.zngl.action.{1}Action">
             <result name="success">WEB-INF/content/welcome.jsp</result>

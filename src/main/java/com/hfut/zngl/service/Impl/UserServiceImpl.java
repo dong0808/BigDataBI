@@ -4,6 +4,8 @@ import com.hfut.zngl.dao.UserDao;
 import com.hfut.zngl.entity.User;
 import com.hfut.zngl.service.UserService;
 
+import java.util.List;
+
 /**
  * Created by 东东 on 2016/11/9.
  */
@@ -34,11 +36,15 @@ public class UserServiceImpl implements UserService{
 
     }
 
-    public User findByName(String name, String pwd) {
-        return userDao.findByName(name,pwd);
+    public User findByName(String name) {
+        return userDao.findByName(name);
     }
 
     public User findById(int id) {
         return userDao.findById(id);
+    }
+
+    public List<User> findAllUser() {
+        return userDao.findAllUser();
     }
 }
