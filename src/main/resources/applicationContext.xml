@@ -22,6 +22,7 @@
         <property name="mappingResources">
             <list>
                 <value>User.hbm.xml</value>
+                <value>Permission.hbm.xml</value>
             </list>
         </property>
         <!-- 定义Hibernate的SessionFactory的属性 -->
@@ -88,6 +89,12 @@
     <bean id="updatePWDAction" class="com.hfut.zngl.action.updatePWDAction">
         <property name="userService" ref="userService"></property>
     </bean>
+
+    <bean id="permission" class="com.hfut.zngl.util.CheckPermission">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+    <bean id="queryInfo" class="com.hfut.zngl.action.QueryInfoAction"></bean>
 
 
 </beans>

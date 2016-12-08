@@ -88,6 +88,28 @@ public class UserDaoImpl implements UserDao{
         return user;
     }
 
+    public User findByNameAndPWD(String name,String pwd) {
+        Session session = null;
+        User user = null;
+        try{
+            session = currentSession();
+            Transaction tx = session.beginTransaction();
+            String hsql = "from User u where u.userName = :uname and u.pwd = :upwd";
+            Query query = session.createQuery(hsql);
+            query.setParameter("uname",name);
+            query.setParameter("upwd",pwd);
+            user = (User)query.uniqueResult();
+            tx.commit();
+        }catch(HibernateException e){
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        return user;
+    }
+
+
+
     @SuppressWarnings("JpaQlInspection")
     public User findById(int id) {
         Session session = null;

@@ -37,8 +37,8 @@
        	    position:absolute;
             margin-left:150px;
             float: left;
-       	    width:180px;
-       	    text-align:center; 
+       	    width:100px;
+       	    text-align:center;
             z-index:1;
             color:#ffffff; 
         }
@@ -46,9 +46,9 @@
         
         #navc{
        	    position:absolute;
-       	    width:900px;
+       	    width:1000px;
        	    left:50%;
-       	    margin-left:-350px;
+       	    margin-left:-300px;
             z-index:1;
         }
         #navc ul{
@@ -65,7 +65,7 @@
             padding:4px;
             display:block; 
             text-decoration:none; 
-            text-align:center; 
+            text-align:left;
             color:#fff;
             }
          #navc ul li a:hover {
@@ -86,7 +86,7 @@
          	background:#99d1f2; 
          	color:black; 
          	width: 152px; 
-         	text-align: center; 
+         	text-align:left;
      
          	}
          #navc ul li:hover ul li a:hover { 
@@ -119,11 +119,11 @@
          #content_right{
        	    position:relative;
        	    margin-top:10px;
-       	    width:900px;
+       	    width:1300px;
        	    height:789px;
        	    background-color:#d3edfa;
             margin-left:6px;
-            float: left;
+            float: right;
           } 
          #content_rightc{
          	margin-left: 30px;

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.hfut.zngl.entity.Permission" table="permission">
+        <id name="userType" column="userType">
+            <generator class="assigned"/>
+        </id>
+        <property name="query" type="java.lang.String"/>
+        <property name="count" type="java.lang.String"/>
+        <property name="evaluate" type="java.lang.String"/>
+        <property name="warning" type="java.lang.String"/>
+        <property name="defense" type="java.lang.String"/>
+        <property name="userManager" type="java.lang.String"/>
+    </class>
+</hibernate-mapping>

@@ -40,6 +40,10 @@ public class UserServiceImpl implements UserService{
         return userDao.findByName(name);
     }
 
+    public User findByNameAndPWD(String name,String pwd) {
+        return userDao.findByNameAndPWD(name,pwd);
+    }
+
     public User findById(int id) {
         return userDao.findById(id);
     }

@@ -6,6 +6,8 @@ package com.hfut.zngl.action;
 public interface ConstantAction {
     public String LOGINOUT = "loginout";
     public String USERMANAGER = "userManager";
+    public String USERCOMMON = "userCommon";
+    public String USERPROFESSOR = "userProfessor";
     public String QUERY = "query";
     public String COUNT = "count";
     public String EVALUATE = "evaluate";

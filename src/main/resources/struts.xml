@@ -45,12 +45,15 @@
         </action>
 
         <action name="hrefAction" class="com.hfut.zngl.action.HrefAction">
-            <result name="query">WEB-INF/content/welcome.jsp</result>
+            <result name="query_info">WEB-INF/content/queryPage/infoQuery.jsp</result>
+            <result name="query_data">WEB-INF/content/queryPage/infoQuery.jsp</result>
             <result name="count">WEB-INF/content/welcome.jsp</result>
             <result name="evaluate">WEB-INF/content/welcome.jsp</result>
             <result name="warning">WEB-INF/content/welcome.jsp</result>
             <result name="defense">WEB-INF/content/welcome.jsp</result>
-            <result name="userManager">WEB-INF/content/userManager.jsp</result>
+            <result name="userManager">WEB-INF/content/admin/userManager.jsp</result>
+            <result name="userCommon">WEB-INF/content/cp_userManager.jsp</result>
+            <result name="userProfessor">WEB-INF/content/cp_userManager.jsp</result>
             <result name="loginout">WEB-INF/content/login.jsp</result>
             <result name="userquery">WEB-INF/content/admin/userQuery.jsp</result>
         </action>
@@ -77,7 +80,11 @@
 
         </action>
 
-
+        <action name="queryInfoAction" class="com.hfut.zngl.action.QueryInfoAction">
+            <result name="honglao">WEB-INF/content/queryPage/query_honglao.html</result>
+            <result name="ganhan">WEB-INF/content/queryPage/query_ganhan.html</result>
+            <result name="wumai">WEB-INF/content/queryPage/query_wumai.html</result>
+        </action>
         <!--<action name="*" class="com.hfut.zngl.action.{1}Action">
             <result name="success">WEB-INF/content/welcome.jsp</result>
             <result name="error">WEB-INF/content/error.jsp</result>

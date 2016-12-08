@@ -12,6 +12,7 @@ public interface UserService {
     public void update(User user);
     public void delete(int id);
     public User findByName(String name);
+    public User findByNameAndPWD(String name,String pwd);
     public User findById(int id);
     public List<User> findAllUser();
 }

@@ -21,7 +21,7 @@ public class LoginInterceptor extends AbstractInterceptor {
         //排除登录Action
         Object action = invocation.getAction();
         if (action instanceof LoginAction) {
-            System.out.println("exit check login, because this is login action.");
+            //System.out.println("exit check login, because this is login action.");
             return invocation.invoke();
         }
         // 取得请求相关的ActionContext实例
@@ -32,7 +32,7 @@ public class LoginInterceptor extends AbstractInterceptor {
         // 如果没有登陆返回重新登陆
 
         if (user != null) {
-            System.out.println("test");
+           // System.out.println("test");
             return invocation.invoke();
         }else{
             return Action.LOGIN;

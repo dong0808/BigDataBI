@@ -29,12 +29,13 @@ public class LoginAction extends ActionSupport {
 
     @Override
     public String execute() throws Exception {
-        User userTemp = userService.findByName(user.getUserName());
+        User userTemp = userService.findByNameAndPWD(user.getUserName(),user.getPwd());
 
         if(userTemp!=null){
             ActionContext ac = ActionContext.getContext();
             Map session = ac.getSession();
             session.put("user",userTemp.getUserName());
+            session.put("userType",userTemp.getUserType());
             return SUCCESS;
         }else{
             return ERROR;

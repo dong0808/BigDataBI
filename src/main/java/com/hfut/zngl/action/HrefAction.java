@@ -1,5 +1,6 @@
 package com.hfut.zngl.action;
 
+import com.hfut.zngl.util.CheckPermission;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -10,17 +11,44 @@ import java.util.Map;
  */
 public class HrefAction extends ActionSupport implements ConstantAction {
 
+    public String queryParam;
 
+    public String getQueryParam() {
+        return queryParam;
+    }
+
+    public void setQueryParam(String queryParam) {
+        this.queryParam = queryParam;
+    }
 
     public String userManager() throws Exception{
 
-        return USERMANAGER;
+        ActionContext ac = ActionContext.getContext();
+        Map session = ac.getSession();
+        String userType = (String)session.get("userType");
+        String permission = CheckPermission.check(userType,"userManager");
+        if(permission.equals("manager")){
+            return USERMANAGER;
+        }else if(permission.equals("professor")){
+            return USERPROFESSOR;
+        }else if(permission.equals("common")){
+            return  USERCOMMON;
+        }
+
+
+        return ERROR;
 
     }
 
     public String query() throws Exception{
 
-        return QUERY;
+
+
+        if(queryParam.equals("info")){
+            return "query_info";
+        }else{
+            return "query_data";
+        }
 
     }
 

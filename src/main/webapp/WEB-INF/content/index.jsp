@@ -33,8 +33,8 @@
         <ul>
             <li><a href="#">查询</a>
                 <ul>
-                    <li><a href="http://localhost:8080/BI/webjsp/concept.jsp">基本信息查询</a></li>
-                    <li><a href="http://localhost:8080/BI/webjsp/dataSearch.jsp">气象数据查询</a></li>
+                    <li><a href="<s:url action="hrefAction" method="query"><s:param name="queryParam">info</s:param></s:url>">基本信息查询</a></li>
+                    <li><a href="<s:url action="hrefAction" method="query"><s:param name="queryParam">data</s:param></s:url>">气象数据查询</a></li>
                 </ul>
             </li>
             <li><a href="#">统计</a>
