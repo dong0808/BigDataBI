@@ -12,6 +12,15 @@ import java.util.Map;
 public class HrefAction extends ActionSupport implements ConstantAction {
 
     public String queryParam;
+    public String countParam;
+
+    public String getCountParam() {
+        return countParam;
+    }
+
+    public void setCountParam(String countParam) {
+        this.countParam = countParam;
+    }
 
     public String getQueryParam() {
         return queryParam;
@@ -54,8 +63,11 @@ public class HrefAction extends ActionSupport implements ConstantAction {
 
     public String count() throws Exception{
 
-        return COUNT;
-
+        if(countParam.equals("dataCount")){
+            return "count_data";
+        }else{
+            return "count_damage";
+        }
     }
 
     public String evaluate() throws Exception{
@@ -89,6 +101,21 @@ public class HrefAction extends ActionSupport implements ConstantAction {
     public String userQuery() throws Exception{
 
         return USERQUERY;
+    }
+
+    public String precipitationQuery(){
+
+        return SUCCESS;
+    }
+
+    public String tempQuery(){
+
+        return SUCCESS;
+    }
+
+    public String pmQuery(){
+
+        return SUCCESS;
     }
 
 }

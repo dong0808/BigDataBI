@@ -46,8 +46,9 @@
 
         <action name="hrefAction" class="com.hfut.zngl.action.HrefAction">
             <result name="query_info">WEB-INF/content/queryPage/infoQuery.jsp</result>
-            <result name="query_data">WEB-INF/content/queryPage/infoQuery.jsp</result>
-            <result name="count">WEB-INF/content/welcome.jsp</result>
+            <result name="query_data">WEB-INF/content/queryPage/dataQuery.jsp</result>
+            <result name="count_data">WEB-INF/content/welcome.jsp</result>
+            <result name="count_damage">WEB-INF/content/welcome.jsp</result>
             <result name="evaluate">WEB-INF/content/welcome.jsp</result>
             <result name="warning">WEB-INF/content/welcome.jsp</result>
             <result name="defense">WEB-INF/content/welcome.jsp</result>

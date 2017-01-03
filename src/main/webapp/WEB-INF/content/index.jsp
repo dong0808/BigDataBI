@@ -39,8 +39,8 @@
             </li>
             <li><a href="#">统计</a>
                 <ul>
-                    <li><a href="<s:url action="hrefAction"/>">数据统计</a></li>
-                    <li><a href="<s:url action="hrefAction"/>">灾害统计</a></li>
+                    <li><a href="<s:url action="hrefAction" method="count"><s:param name="countParam">dataCount</s:param></s:url>">数据统计</a></li>
+                    <li><a href="<s:url action="hrefAction" method="count"><s:param name="countParam">damageCount</s:param></s:url>">灾害统计</a></li>
                 </ul>
             </li>
             <li><a href="<s:url action="hrefAction" method="evaluate"/>">评估</a></li>

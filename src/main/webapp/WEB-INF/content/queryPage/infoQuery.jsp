@@ -10,7 +10,31 @@
 <html>
 <head>
     <title>基本信息查询</title>
+    <script src="../../js/jquery-1.8.3/jquery.js"></script>
+    <script src="../../js/layer/layer.js"></script>
+    <script>
+        function myFunction (s) {
+            switch(s){
+                case "六安":
+                    alert("显示六安相关资料信息！！");
+                    break;
+                case "合肥":
+                    alert("显示合肥相关资料信息！！");
+                    break;
+                case "蚌埠":
+                    alert("显示蚌埠相关资料信息！！");
+                    break;
+                case "芜湖":
+                    alert("显示芜湖相关资料信息！！");
+                    break;
+            }
+
+
+            }
+
+    </script>
 </head>
+
 <body>
 <table>
     <th>灾害种类查询</th>
@@ -22,7 +46,7 @@
 <table>
     <th>地区信息查询</th>
     <tr><td> <div>
-        <s:select name="cityInfo" list="{'请选择','六安','蚌埠','合肥','芜湖'}" />
+        <s:select name="cityInfo" list="{'请选择','六安','蚌埠','合肥','芜湖'}" onchange="myFunction(cityInfo.value)" />
     </div></td></tr>
 </table>
 
