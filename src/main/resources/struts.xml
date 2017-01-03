@@ -34,14 +34,14 @@
 
 
         <action name="login" class="com.hfut.zngl.action.LoginAction">
-            <result name="success">WEB-INF/content/index.jsp</result>
+            <result name="success">content/index1.jsp</result>
             <result name="error">WEB-INF/content/error.jsp</result>
             <result name="input">WEB-INF/content/login.jsp</result>
         </action>
 
         <action name="addUser" class="com.hfut.zngl.action.AddUserAction">
-            <result name="success">WEB-INF/content/welcome.jsp</result>
-            <result name="error">WEB-INF/content/error.jsp</result>
+            <result name="success">../welcome.jsp</result>
+            <result name="error">../error.jsp</result>
         </action>
 
         <action name="hrefAction" class="com.hfut.zngl.action.HrefAction">
@@ -60,7 +60,7 @@
         </action>
 
         <action name="userAction" class="com.hfut.zngl.action.userAction">
-            <result name="userQuery">WEB-INF/content/admin/userQuery.jsp</result>
+            <result name="userQuery">userQuery.jsp</result>
             <result name="userEdit">WEB-INF/content/editUser.jsp</result>
             <result name="userDelete">WEB-INF/content/welcome.jsp</result>
             <result name="userAdd">WEB-INF/content/admin/addUser.jsp</result>

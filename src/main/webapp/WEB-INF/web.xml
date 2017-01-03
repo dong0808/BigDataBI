@@ -30,6 +30,6 @@
     </filter-mapping>
 
     <welcome-file-list>
-        <welcome-file>/WEB-INF/content/login.jsp</welcome-file>
+        <welcome-file>/content/login.jsp</welcome-file>
     </welcome-file-list>
 </web-app>
