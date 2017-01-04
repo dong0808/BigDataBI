@@ -29,14 +29,14 @@
         <!-- 定义全局Result -->
         <global-results>
             <!-- 当返回login视图名时，转入/login.jsp页面 -->
-            <result name="login">/WEB-INF/content/login.jsp</result>
+            <result name="login">content/login.jsp</result>
         </global-results>
 
 
         <action name="login" class="com.hfut.zngl.action.LoginAction">
-            <result name="success">content/index1.jsp</result>
-            <result name="error">WEB-INF/content/error.jsp</result>
-            <result name="input">WEB-INF/content/login.jsp</result>
+            <result name="success">content/indexM.jsp</result>
+            <result name="error">content/error.jsp</result>
+            <result name="input">content/login.jsp</result>
         </action>
 
         <action name="addUser" class="com.hfut.zngl.action.AddUserAction">
@@ -60,24 +60,24 @@
         </action>
 
         <action name="userAction" class="com.hfut.zngl.action.userAction">
-            <result name="userQuery">userQuery.jsp</result>
-            <result name="userEdit">WEB-INF/content/editUser.jsp</result>
-            <result name="userDelete">WEB-INF/content/welcome.jsp</result>
-            <result name="userAdd">WEB-INF/content/admin/addUser.jsp</result>
-            <result name="managerInfoEdit">WEB-INF/content/admin/editManagerInfo.jsp</result>
-            <result name="updatePWD">WEB-INF/content/updatePWD.jsp</result>
+            <result name="userQuery">content/admin/userQuery.jsp</result>
+            <result name="userEdit">content/editUser.jsp</result>
+            <result name="userDelete">content/welcome.jsp</result>
+            <result name="userAdd">content/admin/addUser.jsp</result>
+            <result name="managerInfoEdit">content/admin/editManagerInfo.jsp</result>
+            <result name="updatePWD">content/updatePWD.jsp</result>
 
         </action>
 
         <action name="updateUserAction" class="com.hfut.zngl.action.UpdateUserAction">
-            <result name="success">WEB-INF/content/welcome.jsp</result>
-            <result name="updateManager">WEB-INF/content/welcome.jsp</result>
+            <result name="success">content/welcome.jsp</result>
+            <result name="updateManager">content/welcome.jsp</result>
 
         </action>
 
         <action name="updatePWDAction" class="com.hfut.zngl.action.updatePWDAction">
-            <result name="success">WEB-INF/content/welcome.jsp</result>
-            <result name="error">WEB-INF/content/error.jsp</result>
+            <result name="success">welcome.jsp</result>
+            <result name="error">error.jsp</result>
 
         </action>
 

@@ -1,3 +1,5 @@
+<%@ page import="com.hfut.zngl.entity.User" %>
+<%@ page import="java.util.List" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
@@ -7,24 +9,69 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    List<User> userList = (List<User>) request.getAttribute("userList");
+    System.out.println("用户解："+userList.size());
+
+%>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Title</title>
+    <title>显示用户</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <script type="text/javascript" src="/Js/jquery.js"></script>
+    <script type="text/javascript" src="/Js/jquery.sorted.js"></script>
+    <script type="text/javascript" src="/Js/bootstrap.js"></script>
+    <script type="text/javascript" src="/Js/ckform.js"></script>
+    <script type="text/javascript" src="/Js/common.js"></script>
+
+    <style type="text/css">
+        body {
+            padding-bottom: 40px;
+        }
+        .sidebar-nav {
+            padding: 9px 0;
+        }
+
+        @media (max-width: 980px) {
+            /* Enable use of floated navbar text */
+            .navbar-text.pull-right {
+                float: none;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        }
+
+
+    </style>
 </head>
 <body>
-    <table border="1">
-        <th align="center">用户信息列表</th>
-        <tr>
-            <td>编号</td>
-            <td>用户名</td>
-            <td>密码</td>
-            <td>性别</td>
-            <td>用户类型</td>
-            <td>电话</td>
-            <td>操作</td>
-        </tr>
-        <s:iterator value="#request.userList" var="user">
-            <s:push value="#user">
+<form class="form-inline definewidth m20" action="userAction!userQuery"" method="get">
+     <input type="hidden" name="queryParam" class="abc input-default" placeholder="" value="query" >&nbsp;&nbsp;
+    用户名称：
+    <input type="text" name="QUserName" id="rolename"class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
+    <button type="submit" class="btn btn-primary">查询</button>
+</form>
+<table class="table table-bordered table-hover definewidth m10" >
+    <thead>
+    <tr>
+        <td>编号</td>
+        <td>用户名</td>
+        <td>密码</td>
+        <td>性别</td>
+        <td>用户类型</td>
+        <td>电话</td>
+        <td>管理操作</td>
+    </tr>
+    </thead>
+    <%
+        if(userList.size()>0){
+    %>
+    <s:iterator value="#request.userList" var="user">
+        <s:push value="#user">
             <tr>
                 <td><s:property value="userID"/></td>
                 <td><s:property value="userName"/></td>
@@ -38,9 +85,42 @@
                     <s:param name="userID" value="userID"/></s:url>">删除</a></td>
 
             </tr>
-            </s:push>
-        </s:iterator>
-    </table>
-
+        </s:push>
+    </s:iterator>
+    <%}else { %>
+    <tr>
+        <td colspan="7" align="center" ><font color="red">无符合条件的用户！</font></td>
+    </tr>
+    <%}%>
+</table>
 </body>
 </html>
+<script>
+    $(function () {
+
+        $('#addnew').click(function(){
+
+            window.location.href="add.html";
+        });
+
+
+    });
+
+    function del(id)
+    {
+
+
+        if(confirm("确定要删除吗？"))
+        {
+
+            var url = "index.html";
+
+            window.location.href=url;
+
+        }
+
+
+
+
+    }
+</script>

@@ -80,7 +80,7 @@
                         items:[
                             {id:'9',text:'灾害',href:'Node/index.html'}]}
                 ]},
-            {id:'3',homePage : '9',
+            {id:'3',
                 menu:[{
                     text:'数据统计',
                     items:[
@@ -90,7 +90,7 @@
                         items:[
                             {id:'9',text:'灾害',href:'Node/index.html'}]}
                 ]},
-            {id:'4',homePage : '9',
+            {id:'4',
                 menu:[{
                     text:'数据统计',
                     items:[
@@ -100,7 +100,7 @@
                         items:[
                             {id:'9',text:'灾害',href:'Node/index.html'}]}
                 ]},
-            {id:'5',homePage : '9',
+            {id:'5',
                 menu:[{
                     text:'数据统计',
                     items:[
@@ -110,14 +110,14 @@
                         items:[
                             {id:'9',text:'灾害',href:'Node/index.html'}]}
                 ]},
-            {id:'6',homePage : '9',
+            {id:'6',
                 menu:[{
                     text:'选择管理项目',
                     items:[
-                        {id:'9',text:'显示用户',href:'content/admin/userManager.jsp'},
-                        {id:'9',text:'添加用户',href:'content/admin/addUser.jsp'},
-                        {id:'9',text:'修改密码',href:'content/updatePWD.jsp'},
-                        {id:'9',text:'修改个人信息',href:'content/editUser.jsp'}]},
+                        {id:'61',text:'显示用户',href:'<s:url action="userAction" method="userQuery"/>'},
+                        {id:'62',text:'添加用户',href:'<s:url action="userAction" method="userAdd"/>'},
+                        {id:'63',text:'修改密码',href:'<s:url action="userAction" method="updatePWD"/>'},
+                        {id:'64',text:'修改个人信息',href:'<s:url action="userAction" method="managerInfoEdit"/>'}]},
 
                 ]}];
         new PageUtil.MainPage({

@@ -5,6 +5,7 @@ import com.hfut.zngl.service.UserService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +22,26 @@ public class userAction extends ActionSupport {
     public String UPDATEPWD = "updatePWD";
     public UserService userService;
     public int userID;
+    public String QUserName;
+    public String queryParam;
+
+    public String getQUserName() {
+        return QUserName;
+    }
+
+    public String getQueryParam() {
+        return queryParam;
+    }
+
+    public void setQueryParam(String queryParam) {
+        this.queryParam = queryParam;
+    }
+
+    public void setQUserName(String QUserName) {
+        this.QUserName = QUserName;
+    }
+
+
 
     public int getUserID() {
         return userID;
@@ -40,10 +61,21 @@ public class userAction extends ActionSupport {
 
     public String userQuery() throws Exception{
 
-        List<User> list = userService.findAllUser();
-        ActionContext ac = ActionContext.getContext();
-        ac.put("userList",list);
 
+        if(queryParam==null||queryParam.equals("")) {
+            List<User> list = userService.findAllUser();
+            ActionContext ac = ActionContext.getContext();
+            ac.put("userList", list);
+        }else if(queryParam.equals("query")){
+            List<User> list  = new ArrayList<User>();
+            User u  = (User)userService.findByName(QUserName);
+            if(u!=null){
+                list.add(u);
+            }
+
+            ActionContext ac = ActionContext.getContext();
+            ac.put("userList", list);
+        }
         return USERQUERY;
     }
 
@@ -85,7 +117,8 @@ public class userAction extends ActionSupport {
         ac.put("phone",user.getPhone());
         ac.put("sex",user.getSex());
         ac.put("userID",user.getUserID());
-        System.out.println("用户ID:"+user.getUserID());
+        ac.put("userType",user.getUserType());
+        //System.out.println("用户ID:"+user.getUserID());
         return MANAGERINFOEDIT;
     }
 
