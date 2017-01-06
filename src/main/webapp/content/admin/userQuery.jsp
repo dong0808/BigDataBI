@@ -50,9 +50,9 @@
 </head>
 <body>
 <form class="form-inline definewidth m20" action="userAction!userQuery"" method="get">
-     <input type="hidden" name="queryParam" class="abc input-default" placeholder="" value="query" >&nbsp;&nbsp;
+     <input type="hidden" name="queryParam" class="abc input-default" placeholder="" value="query" />&nbsp;&nbsp;
     用户名称：
-    <input type="text" name="QUserName" id="rolename"class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
+    <input type="text" name="QUserName" id="rolename"class="abc input-default" placeholder=""/>&nbsp;&nbsp;
     <button type="submit" class="btn btn-primary">查询</button>
 </form>
 <table class="table table-bordered table-hover definewidth m10" >
@@ -95,32 +95,3 @@
 </table>
 </body>
 </html>
-<script>
-    $(function () {
-
-        $('#addnew').click(function(){
-
-            window.location.href="add.html";
-        });
-
-
-    });
-
-    function del(id)
-    {
-
-
-        if(confirm("确定要删除吗？"))
-        {
-
-            var url = "index.html";
-
-            window.location.href=url;
-
-        }
-
-
-
-
-    }
-</script>

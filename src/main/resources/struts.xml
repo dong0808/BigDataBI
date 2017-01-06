@@ -34,14 +34,16 @@
 
 
         <action name="login" class="com.hfut.zngl.action.LoginAction">
-            <result name="success">content/indexM.jsp</result>
-            <result name="error">content/error.jsp</result>
+            <result name="manager">content/indexM.jsp</result>
+            <result name="professor">content/indexP.jsp</result>
+            <result name="common">content/indexC.jsp</result>
+            <result name="error">content/fail.html</result>
             <result name="input">content/login.jsp</result>
         </action>
 
         <action name="addUser" class="com.hfut.zngl.action.AddUserAction">
-            <result name="success">../welcome.jsp</result>
-            <result name="error">../error.jsp</result>
+            <result name="success">content/success.html</result>
+            <result name="error">content/fail.html</result>
         </action>
 
         <action name="hrefAction" class="com.hfut.zngl.action.HrefAction">
@@ -55,14 +57,14 @@
             <result name="userManager">WEB-INF/content/admin/userManager.jsp</result>
             <result name="userCommon">WEB-INF/content/cp_userManager.jsp</result>
             <result name="userProfessor">WEB-INF/content/cp_userManager.jsp</result>
-            <result name="loginout">WEB-INF/content/login.jsp</result>
+            <result name="loginout">content/login.jsp</result>
             <result name="userquery">WEB-INF/content/admin/userQuery.jsp</result>
         </action>
 
         <action name="userAction" class="com.hfut.zngl.action.userAction">
             <result name="userQuery">content/admin/userQuery.jsp</result>
             <result name="userEdit">content/editUser.jsp</result>
-            <result name="userDelete">content/welcome.jsp</result>
+            <result name="userDelete">content/success.html</result>
             <result name="userAdd">content/admin/addUser.jsp</result>
             <result name="managerInfoEdit">content/admin/editManagerInfo.jsp</result>
             <result name="updatePWD">content/updatePWD.jsp</result>
@@ -70,26 +72,25 @@
         </action>
 
         <action name="updateUserAction" class="com.hfut.zngl.action.UpdateUserAction">
-            <result name="success">content/welcome.jsp</result>
-            <result name="updateManager">content/welcome.jsp</result>
+            <result name="success">content/success.html</result>
+            <result name="updateManager">content/success.html</result>
 
         </action>
 
         <action name="updatePWDAction" class="com.hfut.zngl.action.updatePWDAction">
-            <result name="success">welcome.jsp</result>
-            <result name="error">error.jsp</result>
+            <result name="success">content/success.html</result>
+            <result name="error">content/fail.html</result>
 
         </action>
 
         <action name="queryInfoAction" class="com.hfut.zngl.action.QueryInfoAction">
-            <result name="honglao">WEB-INF/content/queryPage/query_honglao.html</result>
-            <result name="ganhan">WEB-INF/content/queryPage/query_ganhan.html</result>
-            <result name="wumai">WEB-INF/content/queryPage/query_wumai.html</result>
+            <result name="honglao">content/queryPage/query_honglao.html</result>
+            <result name="ganhan">content/queryPage/query_ganhan.html</result>
+            <result name="wumai">content/queryPage/query_wumai.html</result>
+            <result name="precipitation">content/queryPage/precipitationPage.jsp</result>
+            <result name="temperture">content/queryPage/example.html</result>
+            <result name="honglao">content/queryPage/query_honglao.html</result>
         </action>
-        <!--<action name="*" class="com.hfut.zngl.action.{1}Action">
-            <result name="success">WEB-INF/content/welcome.jsp</result>
-            <result name="error">WEB-INF/content/error.jsp</result>
-        </action>-->
     </package>
 
 

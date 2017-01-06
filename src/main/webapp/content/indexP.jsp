@@ -55,21 +55,21 @@
         var config = [{id:'1',menu:[{
             text:'灾害基本信息查询',
             items:[
-                {id:'111',text:'洪涝',href:'<s:url action="queryInfoAction"><s:param name="damageType">honglao</s:param></s:url>'},
-                {id:'112',text:'雾霾',href:'<s:url action="queryInfoAction"><s:param name="damageType">wumai</s:param></s:url>'},
-                {id:'113',text:'干旱',href:'<s:url action="queryInfoAction"><s:param name="damageType">ganhan</s:param></s:url>'},
+                {id:'111',text:'洪涝',href:'content/queryPage/query_honglao.html'},
+                {id:'112',text:'雾霾',href:'content/queryPage/query_wumai.html'},
+                {id:'113',text:'干旱',href:'content/queryPage/query_ganhan.html'},
             ]},
             {text:'地区基本信息查询',
                 items:[
-                    {id:'121',text:'合肥',href:'<s:url action="queryInfoAction"><s:param name="damageType">ganhan</s:param></s:url>'},
-                    {id:'122',text:'蚌埠',href:'<s:url action="queryInfoAction"><s:param name="damageType">ganhan</s:param></s:url>'},
-                    {id:'123',text:'芜湖',href:'<s:url action="queryInfoAction"><s:param name="damageType">ganhan</s:param></s:url>'},
+                    {id:'121',text:'合肥',href:'content/queryPage/query_honglao.html'},
+                    {id:'122',text:'蚌埠',href:'content/queryPage/query_wumai.html'},
+                    {id:'123',text:'芜湖',href:'content/queryPage/query_ganhan.html'},
                 ]},
            {text:'气象数据查询',
             items:[
-                {id:'131',text:'降水量',href:'<s:url action="queryInfoAction" method="dataQuery"><s:param name="dataType">precipitation</s:param></s:url>'},
-                {id:'132',text:'温度',href:'<s:url action="queryInfoAction" method="dataQuery"><s:param name="dataType">temperture</s:param></s:url>'},
-                {id:'133',text:'PM2.5',href:'<s:url action="queryInfoAction" method="dataQuery"><s:param name="dataType">pm</s:param></s:url>'}]}]},
+                {id:'121',text:'降水量',href:'Node/index.html'},
+                {id:'122',text:'温度',href:'Role/index.html'},
+                {id:'123',text:'PM2.5',href:'User/index.html'}]}]},
             {id:'2',
                 menu:[{
                     text:'数据统计',
@@ -114,10 +114,8 @@
                 menu:[{
                     text:'选择管理项目',
                     items:[
-                        {id:'61',text:'显示用户',href:'<s:url action="userAction" method="userQuery"/>'},
-                        {id:'62',text:'添加用户',href:'<s:url action="userAction" method="userAdd"/>'},
-                        {id:'63',text:'修改密码',href:'<s:url action="userAction" method="updatePWD"/>'},
-                        {id:'64',text:'修改个人信息',href:'<s:url action="userAction" method="managerInfoEdit"/>'}]},
+                        {id:'61',text:'修改密码',href:'<s:url action="userAction" method="updatePWD"/>'},
+                        {id:'62',text:'修改个人信息',href:'<s:url action="userAction" method="managerInfoEdit"/>'}]},
 
                 ]}];
         new PageUtil.MainPage({

@@ -36,7 +36,14 @@ public class LoginAction extends ActionSupport {
             Map session = ac.getSession();
             session.put("user",userTemp.getUserName());
             session.put("userType",userTemp.getUserType());
-            return SUCCESS;
+            if(userTemp.getUserType().equals("manager")){
+                return "manager";
+            }else if(userTemp.getUserType().equals("professor")){
+                return "professor";
+            }else if(userTemp.getUserType().equals("common")){
+                return "common";
+            }
+            return null;
         }else{
             return ERROR;
         }
