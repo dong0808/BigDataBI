@@ -4,6 +4,7 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 
+
 <struts>
     <constant name="struts.enable.DynamicMethodInvocation" value="true" />
     <constant name="struts.devMode" value="false" />
@@ -88,11 +89,32 @@
             <result name="ganhan">content/queryPage/query_ganhan.html</result>
             <result name="wumai">content/queryPage/query_wumai.html</result>
             <result name="precipitation">content/queryPage/precipitationPage.jsp</result>
-            <result name="temperture">content/queryPage/example.html</result>
-            <result name="honglao">content/queryPage/query_honglao.html</result>
+            <result name="temperture">content/queryPage/temperturePage.jsp</result>
+            <result name="pm">content/queryPage/query_honglao.html</result>
         </action>
-    </package>
 
+
+
+
+    </package>
+    <!--suppress Struts2ModelInspection -->
+    <package name="JsonData" extends="json-default">
+        <action name="queryDataAction" class="com.hfut.zngl.action.QueryDataAction">
+            <!--suppress Struts2ModelInspection -->
+            <result name="prec" type="json">
+                <param name="root">jsonResult</param>
+            </result>
+            <!--suppress Struts2ModelInspection -->
+            <result name="temp" type="json">
+                <param name="root">jsonResult</param>
+            </result>
+        </action>
+        <!--<action name="*">-->
+            <!--<result>content/queryPage/precipitationPage.jsp</result>-->
+
+        <!--</action>-->
+
+    </package>
 
 
 </struts>

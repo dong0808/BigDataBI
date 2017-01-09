@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>降水量查询</title>
+    <title>温度查询</title>
 
     <link href="/assets1/css/bs3/dpl.css" rel="stylesheet">
     <link href="/assets1/css/bs3/bui.css" rel="stylesheet">
@@ -15,7 +15,7 @@
 
 <div class="row" align="center">
     <div class="span24">
-        <div class="panel-header"><h3 align="center"><font color="#6495ed">降水量查询</font></h3></div>
+        <div class="panel-header"><h3 align="center"><font color="#6495ed">温度查询</font></h3></div>
         <form id="searchForm"   class="form-horizontal" tabindex="0" style="outline: none;">
             <%--<input type="hidden" name="precipitationQuery" value="pq"/>--%>
             <div class="row">
@@ -67,49 +67,76 @@
                 var formData = $("#searchForm").serialize();
                 console.log(formData);
                 $.ajax({
-                    url:'queryDataAction!precipitationQuery',
+                    url:'queryDataAction!tempertureQuery',
                     type:'POST',
                     data:formData,
                     dataType:'json',
                     success:function (data) {
                         var d = eval(data);
                         console.log(d);
-                       mychart(d[0].dateResult,d[0].preResult,d[0].stationName);
+                        console.log(d[0].minTlist)
+                       mychart(d[0]);
                     },
                     error:function () {
                         alert("出错了的！！");
                     }
 
                 });
-                /*$.getJSON("/test/input_user!queryHello", function (data) {
-                 //通过.操作符可以从data.hello中获得Action中hello的值
-                 $("#allUser").html("输出了: " + data.hello);
-                 });*/
+
             });});
 
-            function mychart(dData,pData,sName) {
+            function mychart(dObject) {
                 var myChart = echarts.init(document.getElementById('MyChart'));
 
                 // 指定图表的配置项和数据
-                var option = {
+                option = {
                     title: {
-                        text: sName,
-
+                        text: dObject.stationName
                     },
-                    tooltip: {},
+                    tooltip: {
+                        trigger: 'axis'
+                    },
                     legend: {
-                        data:['降水量']
+                        data:['最低温度','平均温度','最高温度']
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    toolbox: {
+                        feature: {
+                            saveAsImage: {}
+                        }
                     },
                     xAxis: {
-                        data: dData
+                        type: 'category',
+                        boundaryGap: false,
+                        data: dObject.dateResult
                     },
-                    yAxis: {},
-                    series: [{
-                        name: '降水量',
-                        type: 'bar',
-                        data: pData
-                    }]
+                    yAxis: {
+                        type: 'value'
+                    },
+                    series: [
+                        {
+                            name:'最低温度',
+                            type:'line',
+                            data:dObject.minTList
+                        },
+                        {
+                            name:'平均温度',
+                            type:'line',
+                            data:dObject.avTList
+                        },
+                        {
+                            name:'最高温度',
+                            type:'line',
+                            data:dObject.maxTList
+                        }
+                    ]
                 };
+
 
                 // 使用刚指定的配置项和数据显示图表。
                 myChart.setOption(option);
@@ -119,26 +146,8 @@
 
     </script>
 
-<%--<script type="text/javascript">
-    $(document).ready(function () {
-        $("#btnSearch").click(function(){
-            $.getJSON("queryDataAction!precipitationQuery.action",function(data){
-                console.log(data);
-                //清空显示层中的数据
-                $("#MyChart").html("");
-                //使用jQuery中的each(data,function(){});函数
-                //从data.userInfosList获取UserInfo对象放入value之中
-                $.each(data.preList,function(i,value){
-                    $("#MyChart").append("<div>第"+(i+1)+"个用户：</div>")
-                            .append("<div><font color='red'>用户ID："+value.precipitation+"</font></div>")
-                            .append("<div><font color='red'>用户名："+value.precipitation+"</font></div>")
-                            .append("<div><font color='red'>密码："+value.precipitation+"</font></div>");
-                });
-            });
-        });
-    });--%>
 
-<!-- script end -->
+
 
 </body>
 </html>

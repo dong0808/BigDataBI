@@ -22,7 +22,10 @@
         <property name="mappingResources">
             <list>
                 <value>User.hbm.xml</value>
+                <value>Station.hbm.xml</value>
+                <value>BasicData.hbm.xml</value>
                 <value>Permission.hbm.xml</value>
+
             </list>
         </property>
         <!-- 定义Hibernate的SessionFactory的属性 -->
@@ -65,9 +68,25 @@
     <bean id="userDao" class="com.hfut.zngl.dao.Impl.UserDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
+
+    <bean id="stationDao" class="com.hfut.zngl.dao.Impl.StationDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+    <bean id="basicDataDao" class="com.hfut.zngl.dao.Impl.BasicDataDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
     <!--用户服务层实现-->
     <bean id="userService" class="com.hfut.zngl.service.Impl.UserServiceImpl">
         <property name="userDao" ref="userDao"></property>
+    </bean>
+
+    <bean id="stationService" class="com.hfut.zngl.service.Impl.StationServiceImpl">
+        <property name="stationDao" ref="stationDao"></property>
+    </bean>
+
+    <bean id="basicDataService" class="com.hfut.zngl.service.Impl.BasicDataServiceImpl">
+        <property name="basicDataDao" ref="basicDataDao"></property>
     </bean>
     <!--登陆处理-->
     <bean id="loginAction" class="com.hfut.zngl.action.LoginAction">
@@ -95,6 +114,11 @@
     </bean>
 
     <bean id="queryInfo" class="com.hfut.zngl.action.QueryInfoAction"></bean>
+
+    <bean id="queryDataAction" class="com.hfut.zngl.action.QueryDataAction">
+        <property name="stationService" ref="stationService"/>
+        <property name="basicDataService" ref="basicDataService"/>
+    </bean>
 
 
 </beans>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.hfut.zngl.entity.BasicData" table="basic_data">
+        <id name="ID" column="ID">
+            <generator class="identity"></generator>
+        </id>
+        <property name="station_id" type="java.lang.String"/>
+        <property name="observation_time" type="java.lang.String"/>
+        <property name="precipitation" type="double"/>
+        <property name="ave_temperture" type="double"/>
+        <property name="max_temperture" type="double"/>
+        <property name="min_temperture" type="double"/>
+        <property name="PM" type="double"/>
+    </class>
+</hibernate-mapping>

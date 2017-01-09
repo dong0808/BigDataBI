@@ -60,14 +60,5 @@ public class QueryInfoAction extends ActionSupport {
         }
     }
 
-    public String precipitationQuery() throws Exception{
 
-
-
-
-
-        return "";
-
-
-    }
 }
