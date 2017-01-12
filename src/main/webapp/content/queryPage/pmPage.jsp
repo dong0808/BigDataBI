@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>降水量查询</title>
+    <title>雾霾相关指标查询</title>
 
     <link href="/assets1/css/bs3/dpl.css" rel="stylesheet">
     <link href="/assets1/css/bs3/bui.css" rel="stylesheet">
@@ -15,7 +15,7 @@
 
 <div class="row" align="center">
     <div class="span24">
-        <div class="panel-header"><h3 align="center"><font color="#6495ed">降水量查询</font></h3></div>
+        <div class="panel-header"><h3 align="center"><font color="#6495ed">PM2.5指标查询</font></h3></div>
         <form id="searchForm"   class="form-horizontal" tabindex="0" style="outline: none;">
             <%--<input type="hidden" name="precipitationQuery" value="pq"/>--%>
             <div class="row">
@@ -48,7 +48,7 @@
 
     </div>
 </div>
-<div id="MyChart" align="center" style="width: 1000px;height:700px;margin-top: 20px;margin-left: 40px">
+<div id="MyChart" align="center" style="width: 1100px;height:700px;margin-top: 20px;margin-left: 15px">
 
 </div>
     <script src="/assets1/js/jquery-1.8.1.min.js"></script>
@@ -67,30 +67,36 @@
                 var formData = $("#searchForm").serialize();
                 console.log(formData);
                 $.ajax({
-                    url:'queryDataAction!precipitationQuery',
+                    url:'queryDataAction!pmQuery',
                     type:'POST',
                     data:formData,
                     dataType:'json',
                     success:function (data) {
                         var d = eval(data);
                         console.log(d);
-                       mychart(d[0].dateResult,d[0].preResult,d[0].stationName);
+                       mychart(d[0].dateResult,d[0].pmResult,d[0].stationName);
                     },
                     error:function () {
                         alert("出错了的！！");
                     }
 
                 });
+                /*$.getJSON("/test/input_user!queryHello", function (data) {
+                 //通过.操作符可以从data.hello中获得Action中hello的值
+                 $("#allUser").html("输出了: " + data.hello);
+                 });*/
             });});
 
             function mychart(dData,pData,sName) {
                 var myChart = echarts.init(document.getElementById('MyChart'));
 
                 // 指定图表的配置项和数据
-                var option = {
-                    title: {
-                        text: sName,
-
+                option = {
+                    tooltip : {
+                        trigger: 'axis'
+                    },
+                    legend: {
+                        data:['PM2.5']
                     },
                     toolbox: {
                         show : true,
@@ -102,20 +108,82 @@
                             saveAsImage : {show: true}
                         }
                     },
-                    tooltip: {},
-                    legend: {
-                        data:['降水量']
+                    calculable : true,
+                    xAxis : [
+                        {
+                            type : 'category',
+                            boundaryGap : false,
+                            data : dData
+                        }
+                    ],
+                    yAxis : [
+                        {
+                            type : 'value',
+                            axisLabel : {
+                                formatter: '{value}'
+                            }
+                        }
+                    ],
+                    visualMap: {
+                        top: 25,
+                        right: 0,
+                        pieces: [{
+                            gt: 0,
+                            lte: 50,
+                            color: '#096'
+                        }, {
+                            gt: 50,
+                            lte: 100,
+                            color: '#ffde33'
+                        }, {
+                            gt: 100,
+                            lte: 150,
+                            color: '#ff9933'
+                        }, {
+                            gt: 150,
+                            lte: 200,
+                            color: '#cc0033'
+                        }, {
+                            gt: 200,
+                            lte: 300,
+                            color: '#660099'
+                        }, {
+                            gt: 300,
+                            color: '#7e0023'
+                        }],
+                        outOfRange: {
+                            color: '#999'
+                        }
                     },
-                    xAxis: {
-                        data: dData
-                    },
-                    yAxis: {},
-                    series: [{
-                        name: '降水量',
-                        type: 'bar',
-                        data: pData
-                    }]
+                    series : [
+                        {
+                            name:'PM2.5',
+                            type:'line',
+                            data:pData,
+                            markPoint : {
+                                data : [
+                                    {type : 'max', name: '最大值'},
+                                    {type : 'min', name: '最小值'}
+                                ]
+                            },
+                            markLine: {
+                                silent: true,
+                                data: [{
+                                    yAxis: 50
+                                }, {
+                                    yAxis: 100
+                                }, {
+                                    yAxis: 150
+                                }, {
+                                    yAxis: 200
+                                }, {
+                                    yAxis: 300
+                                }]
+                            }
+                        },
+                    ]
                 };
+
 
                 // 使用刚指定的配置项和数据显示图表。
                 myChart.setOption(option);
@@ -124,7 +192,6 @@
             }
 
     </script>
-
 
 </body>
 </html>

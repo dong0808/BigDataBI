@@ -21,11 +21,6 @@
 <body>
 
 <div class="header">
-
-    <div class="dl-title">
-        大数据环境下农业气象灾害商务智能系统
-    </div>
-
     <div class="dl-log">欢迎您，<span class="dl-log-user">${sessionScope.user}</span><a href="<s:url action="hrefAction" method="loginout"/>" title="退出系统" class="dl-log-quit">[退出]</a>
     </div>
 </div>

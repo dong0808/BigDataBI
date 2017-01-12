@@ -90,7 +90,7 @@
             <result name="wumai">content/queryPage/query_wumai.html</result>
             <result name="precipitation">content/queryPage/precipitationPage.jsp</result>
             <result name="temperture">content/queryPage/temperturePage.jsp</result>
-            <result name="pm">content/queryPage/query_honglao.html</result>
+            <result name="pm">content/queryPage/pmPage.jsp</result>
         </action>
 
 
@@ -106,6 +106,10 @@
             </result>
             <!--suppress Struts2ModelInspection -->
             <result name="temp" type="json">
+                <param name="root">jsonResult</param>
+            </result>
+            <!--suppress Struts2ModelInspection -->
+            <result name="pm" type="json">
                 <param name="root">jsonResult</param>
             </result>
         </action>

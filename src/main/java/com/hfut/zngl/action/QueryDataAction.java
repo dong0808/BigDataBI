@@ -125,4 +125,26 @@ public class QueryDataAction extends ActionSupport {
         jsonResult = JSONArray.fromObject(resultMap).toString();
         return "prec";
     }
+
+    public String pmQuery() throws Exception {
+        List<Double> pmList = new ArrayList<Double>();
+        List<String> dataList = new ArrayList<String>();
+        Station stationTemp = stationService.findByName(station_name);
+        String stationID = stationTemp.getStation_id();
+        List<BasicData> list = basicDataService.findAllByIDAndDate(stationID, startDate, endDate);
+        for (BasicData b : list) {
+            pmList.add(b.getPM());
+            dataList.add(b.getObservation_time());
+            //System.out.println(b.getPrecipitation());
+        }
+//        System.out.print();
+        resultMap = new HashMap<String, Object>();
+        resultMap.put("pmResult", pmList);
+        resultMap.put("dateResult", dataList);
+        resultMap.put("stationName", station_name);
+
+
+        jsonResult = JSONArray.fromObject(resultMap).toString();
+        return "pm";
+    }
 }
