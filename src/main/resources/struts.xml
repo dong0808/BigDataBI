@@ -7,7 +7,7 @@
 
 <struts>
     <constant name="struts.enable.DynamicMethodInvocation" value="true" />
-    <constant name="struts.devMode" value="false" />
+    <constant name="struts.devMode" value="true" />
     <constant name="struts.custom.i18n.resources" value="mess"/>
     <!-- 指定国际化编码所使用的字符集 -->
     <constant name="struts.i18n.encoding" value="UTF-8"/>
@@ -113,10 +113,21 @@
                 <param name="root">jsonResult</param>
             </result>
         </action>
-        <!--<action name="*">-->
-            <!--<result>content/queryPage/precipitationPage.jsp</result>-->
+        <action name="countAction" class="com.hfut.zngl.action.CountAction">
+            <!--suppress Struts2ModelInspection -->
+            <result name="tb" type="json">
+                <param name="root">jsonResult</param>
+            </result>
+            <!--suppress Struts2ModelInspection -->
+            <result name="hb" type="json">
+                <param name="root">jsonResult</param>
+            </result>
+            <!--suppress Struts2ModelInspection -->
+            <result name="hz" type="json">
+                <param name="root">jsonResult</param>
+            </result>
 
-        <!--</action>-->
+        </action>
 
     </package>
 
