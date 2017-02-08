@@ -4,6 +4,8 @@ import com.hfut.zngl.dao.StationDao;
 import com.hfut.zngl.entity.Station;
 import com.hfut.zngl.service.StationService;
 
+import java.util.List;
+
 /**
  * Created by 东东 on 2017/1/6.
  */
@@ -29,4 +31,8 @@ public class StationServiceImpl implements StationService {
         return stationDao.findByName(station_name);
 
     };
+
+    public List<Station> findStationByCityName(String cityName){
+        return stationDao.findStationByCityName(cityName);
+    }
 }
