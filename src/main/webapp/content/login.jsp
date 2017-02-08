@@ -76,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			                        	<label class="sr-only" for="form-password">密 码</label>
 			                        	<input type="password" name="user.pwd" placeholder="Password..." class="form-password form-control" id="form-password">
 			                        </div>
-			                        <button type="submit" class="btn">登录</button>
+			                        <button type="submit" class="btn">登录i</button>
 			                    </form>
 		                    </div>
                         </div>
