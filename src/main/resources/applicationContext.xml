@@ -10,7 +10,7 @@
           p:driverClass="com.mysql.jdbc.Driver"
           p:jdbcUrl="jdbc:mysql://localhost:3306/sshtest"
           p:user="root"
-          p:password="jdd19930808"
+          p:password="hadoop"
           p:maxPoolSize="40"
           p:minPoolSize="1"
           p:initialPoolSize="2"
