@@ -8,9 +8,9 @@
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
           destroy-method="close"
           p:driverClass="com.mysql.jdbc.Driver"
-          p:jdbcUrl="jdbc:mysql://localhost:3306/sshtest"
+          p:jdbcUrl="jdbc:mysql://localhost:3306/project"
           p:user="root"
-          p:password="jdd19930808"
+          p:password="hadoop"
           p:maxPoolSize="40"
           p:minPoolSize="1"
           p:initialPoolSize="2"
@@ -25,7 +25,7 @@
                 <value>Station.hbm.xml</value>
                 <value>BasicData.hbm.xml</value>
                 <value>Permission.hbm.xml</value>
-
+                <value>WaterTable.hbm.xml</value>
             </list>
         </property>
         <!-- 定义Hibernate的SessionFactory的属性 -->
@@ -76,6 +76,10 @@
     <bean id="basicDataDao" class="com.hfut.zngl.dao.Impl.BasicDataDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
+
+    <bean id="waterTableDao" class="com.hfut.zngl.dao.Impl.WaterTableDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
     <!--用户服务层实现-->
     <bean id="userService" class="com.hfut.zngl.service.Impl.UserServiceImpl">
         <property name="userDao" ref="userDao"></property>
@@ -87,6 +91,10 @@
 
     <bean id="basicDataService" class="com.hfut.zngl.service.Impl.BasicDataServiceImpl">
         <property name="basicDataDao" ref="basicDataDao"></property>
+    </bean>
+
+    <bean id="waterTableService" class="com.hfut.zngl.service.Impl.WaterTableServiceImpl">
+        <property name="waterTableDao" ref="waterTableDao"></property>
     </bean>
     <!--登陆处理-->
     <bean id="loginAction" class="com.hfut.zngl.action.LoginAction">
@@ -118,6 +126,11 @@
     <bean id="queryDataAction" class="com.hfut.zngl.action.QueryDataAction">
         <property name="stationService" ref="stationService"/>
         <property name="basicDataService" ref="basicDataService"/>
+    </bean>
+
+    <bean id="countAction" class="com.hfut.zngl.action.CountAction">
+        <property name="stationService" ref="stationService"/>
+        <property name="waterTableService" ref="waterTableService"/>
     </bean>
 
 

@@ -79,10 +79,13 @@
                 {id:'132',text:'温度',href:'<s:url action="queryInfoAction" method="dataQuery"><s:param name="dataType">temperture</s:param></s:url>'},
                 {id:'133',text:'PM2.5',href:'<s:url action="queryInfoAction" method="dataQuery"><s:param name="dataType">pm</s:param></s:url>'}]}]},
             {id:'2',
-                menu:[{
-                    text:'数据统计',
+                menu:[
+                    {text:'降水量',
                     items:[
-                            {id:'9',text:'数据',href:'Node/index.html'}]},
+                            {id:'211',text:'同比统计',href:'content/countPage/precipitationTB.jsp'},
+                            {id:'212',text:'环比统计',href:'content/countPage/precipitationHB.jsp'},
+                            {id:'213',text:'汇总统计',href:'content/countPage/precipitationHZ.jsp'}]
+                    },
                     {
                         text:'灾害统计',
                         items:[

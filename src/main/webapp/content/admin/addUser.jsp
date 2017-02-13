@@ -39,7 +39,7 @@
     </style>
 </head>
 <body>
-<form action="addUser" method="POST" class="definewidth m20">
+<form id="adduser" action="addUser" method="POST" class="definewidth m20">
     <table class="table table-bordered table-hover m10">
         <tr>
             <td class="tableleft">用户ID</td>

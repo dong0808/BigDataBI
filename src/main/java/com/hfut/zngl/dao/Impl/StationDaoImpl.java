@@ -4,6 +4,8 @@ import com.hfut.zngl.dao.StationDao;
 import com.hfut.zngl.entity.Station;
 import org.hibernate.*;
 
+import java.util.List;
+
 /**
  * Created by 东东 on 2017/1/6.
  */
@@ -59,4 +61,41 @@ public class StationDaoImpl implements StationDao {
         return station;
 
     };
+
+    public List<Station> findAllStation() {
+        Session session = null;
+        List<Station> list = null;
+        try{
+            session = currentSession();
+            Transaction tx = session.beginTransaction();
+            String hsql = "from Station s";
+            Query query = session.createQuery(hsql);
+            list = (List<Station>)query.list();
+            tx.commit();
+        }catch(HibernateException e){
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        return list;
+    }
+
+    public List<Station> findStationByCityName(String cityName) {
+        Session session = null;
+        List<Station> list = null;
+        try{
+            session = currentSession();
+            Transaction tx = session.beginTransaction();
+            String hsql = "from Station s where s.cityName = :cityName";
+            Query query = session.createQuery(hsql);
+            query.setParameter("cityName",cityName);
+            list = (List<Station>)query.list();
+            tx.commit();
+        }catch(HibernateException e){
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        return list;
+    }
 }
