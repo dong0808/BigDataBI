@@ -14,5 +14,7 @@
         <property name="max_temperture" type="double"/>
         <property name="min_temperture" type="double"/>
         <property name="PM" type="double"/>
+        <property name="CO" type="double"/>
+        <property name="NO" type="double"/>
     </class>
 </hibernate-mapping>

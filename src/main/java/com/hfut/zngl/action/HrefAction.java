@@ -118,4 +118,14 @@ public class HrefAction extends ActionSupport implements ConstantAction {
         return SUCCESS;
     }
 
+    public String coQuery(){
+
+        return SUCCESS;
+    }
+
+    public String noQuery(){
+
+        return SUCCESS;
+    }
+
 }

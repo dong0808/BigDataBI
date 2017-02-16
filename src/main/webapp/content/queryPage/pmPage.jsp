@@ -81,10 +81,7 @@
                     }
 
                 });
-                /*$.getJSON("/test/input_user!queryHello", function (data) {
-                 //通过.操作符可以从data.hello中获得Action中hello的值
-                 $("#allUser").html("输出了: " + data.hello);
-                 });*/
+
             });});
 
             function mychart(dData,pData,sName) {

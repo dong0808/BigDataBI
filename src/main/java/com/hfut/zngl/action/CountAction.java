@@ -1,9 +1,8 @@
 package com.hfut.zngl.action;
 
-import com.hfut.zngl.entity.Station;
-import com.hfut.zngl.entity.WaterTable;
-import com.hfut.zngl.entity.WaterTableID;
+import com.hfut.zngl.entity.*;
 import com.hfut.zngl.service.StationService;
+import com.hfut.zngl.service.TempertureTableService;
 import com.hfut.zngl.service.WaterTableService;
 import com.opensymphony.xwork2.ActionSupport;
 import net.sf.json.JSONArray;
@@ -37,6 +36,7 @@ public class CountAction extends ActionSupport{
     private String startMonth;
     private String endMonth;
     private WaterTableService waterTableService;
+    private TempertureTableService tempertureTableService;
     private StationService stationService;
     private String jsonResult;
     private Map<String, Object> resultMap;
@@ -91,6 +91,9 @@ public class CountAction extends ActionSupport{
         this.waterTableService = waterTableService;
     }
 
+    public void setTempertureTableService(TempertureTableService tempertureTableService) {
+        this.tempertureTableService = tempertureTableService;
+    }
 
     public void setStation_name(String station_name) {
         this.station_name = station_name;
@@ -151,6 +154,9 @@ public class CountAction extends ActionSupport{
         resultMap.put("TRain",TList);
         resultMap.put("FRain",FList);
         jsonResult = JSONArray.fromObject(resultMap).toString();
+
+        System.out.println(TList);
+        System.out.println(FList);
 
       return "tb";
 
@@ -252,5 +258,161 @@ public class CountAction extends ActionSupport{
 
         return "hz";
 
+    }
+
+    //温度同比
+    public String tempertureTB(){
+
+        //查询表获取stationID
+        System.out.println("开始执行。。。");
+
+        Station stationTemp = stationService.findByName(station_name);
+        String stationID = stationTemp.getStation_id();
+        TempertureTableID tempertureTableID = new TempertureTableID();
+        tempertureTableID.setStation_id(stationID);
+        //根据前台参数拼接成方法需要参数
+        String startDate = year+"0"+startMonth;
+        String endDate = year+endMonth;
+        //获取所有符合条件的TempertureTable实体
+        List<TempertureTable> list = tempertureTableService.findTempByID(tempertureTableID,startDate,endDate);
+
+        //获取前一年的相关数据
+        int yearInt = Integer.parseInt(year)-1;
+        String startDateF = yearInt+"0"+startMonth;
+        String endDateF = yearInt+endMonth;
+        List<TempertureTable> list1 = tempertureTableService.findTempByID(tempertureTableID,startDateF,endDateF);
+
+        //做同比处理 （今年温度-去年温度）/去年温度*100%
+        List<Double> listT = new ArrayList<Double>();
+        //构建List存储日期，降水量
+        List<String> dateList = new ArrayList<String>();
+        List<Float> TList = new ArrayList<Float>();
+        List<Float> FList = new ArrayList<Float>();
+
+        //NumberFormat nf   =   NumberFormat.getPercentInstance();
+        for(int i=0;i<list1.size();i++){
+
+            listT.add((double)(list.get(i).getTempHigh()-list1.get(i).getTempHigh())/list1.get(i).getTempHigh());
+            TList.add(list.get(i).getTempHigh());
+            FList.add(list1.get(i).getTempHigh());
+            dateList.add(list.get(i).getTempertureTableID().getTimeID().substring(4));
+
+        }
+
+        System.out.println(TList);
+        System.out.println(FList);
+
+        //json格式转换
+        resultMap = new HashMap<String, Object>();
+        resultMap.put("TB",listT);
+        resultMap.put("date",dateList);
+        resultMap.put("TRain",TList);
+        resultMap.put("FRain",FList);
+        jsonResult = JSONArray.fromObject(resultMap).toString();
+
+        System.out.println("执行结束。。。");
+
+        //System.out.println(TList);
+       // System.out.println(FList);
+
+        return "ttb";
+    }
+
+    //温度环比
+    public String tempertureHB(){
+
+        //查询表获取stationID
+        Station stationTemp = stationService.findByName(station_name);
+        String stationID = stationTemp.getStation_id();
+        TempertureTableID tempertureTableID = new TempertureTableID();
+        tempertureTableID.setStation_id(stationID);
+        //根据前台参数拼接成方法需要参数
+        String startDate = year+"0"+startMonth;
+        String endDate = year+endMonth;
+        //获取所有符合条件的WaterTable实体
+        List<TempertureTable> list = tempertureTableService.findTempByID(tempertureTableID,startDate,endDate);
+
+        //做环比处理 （本月温度-上月温度）/上月温度*100%
+        List<Double> listH = new ArrayList<Double>();
+        //构建List存储日期，温度
+        List<String> dateList = new ArrayList<String>();
+        List<Float> TList = new ArrayList<Float>();
+
+        //NumberFormat nf   =   NumberFormat.getPercentInstance();
+        for(int i=0;i<list.size();i++){
+            if(i==0){
+                listH.add(0.0);
+                TList.add(list.get(i).getTempHigh());
+                dateList.add(list.get(i).getTempertureTableID().getTimeID().substring(4));
+            }else {
+
+                listH.add((double) (list.get(i).getTempHigh() - list.get(i-1).getTempHigh()) / list.get(i-1).getTempHigh());
+                TList.add(list.get(i).getTempHigh());
+                dateList.add(list.get(i).getTempertureTableID().getTimeID().substring(4));
+            }
+        }
+
+        //json格式转换
+        resultMap = new HashMap<String, Object>();
+        resultMap.put("HB",listH);
+        resultMap.put("date",dateList);
+        resultMap.put("TRain",TList);
+        jsonResult = JSONArray.fromObject(resultMap).toString();
+
+        return "thb";
+    }
+
+    //温度汇总
+    public String tempertureHZ(){
+
+        //查询表获取地级市下面各个站点ID
+        List<Station> listS = stationService.findStationByCityName(cityName);
+        //定义地市温度总和
+        double totalP = 0.0;
+        //定义存储各地市温度之和的list
+        List<Double> listP = new ArrayList<Double>();
+
+        //定义存储各地市名称的List
+        List<String> listName = new ArrayList<String>();
+        //循环得到各个站点的温度之和
+        for(int i=0;i<listS.size();i++){
+            String stationID = listS.get(i).getStation_id();
+            String stationName = listS.get(i).getStation_name();
+            TempertureTableID tempertureTableID = new TempertureTableID();
+            tempertureTableID.setStation_id(stationID);
+            //根据前台参数拼接成方法需要参数
+            String startDate;
+            if(Integer.parseInt(startMonth)<10){
+                startDate = startYear+"0"+startMonth;
+            }else{
+                startDate = startYear+startMonth;
+            }
+            String endDate;
+            if(Integer.parseInt(endMonth)<10){
+                endDate = endYear+"0"+endMonth;
+            }else{
+                endDate = endYear+endMonth;
+            }
+            //获取所有符合条件的TempertureTable实体
+            List<TempertureTable> list = tempertureTableService.findTempByID(tempertureTableID,startDate,endDate);
+            //本站点做温度汇总处理
+            double sum = 0.0;
+            for(int j=0;j<list.size();j++){
+                sum = sum + list.get(j).getTempHigh();
+            }
+            listName.add(stationName);
+            listP.add(sum);
+            totalP = totalP + sum;
+        }
+
+
+        //json格式转换
+        resultMap = new HashMap<String, Object>();
+        resultMap.put("HZ",listP);
+        resultMap.put("sName",listName);
+        resultMap.put("total",totalP);
+        jsonResult = JSONArray.fromObject(resultMap).toString();
+
+        return "thz";
     }
 }
