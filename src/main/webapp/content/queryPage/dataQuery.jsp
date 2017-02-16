@@ -18,6 +18,8 @@
     <tr><td><a href="<s:url action="hrefAction" method="precipitationQuery"></s:url>">降水量</a></td></tr>
     <tr><td><a href="<s:url action="hrefAction" method="tempQuery"></s:url>">温度</a></td></tr>
     <tr><td><a href="<s:url action="hrefAction" method="pmQuery"></s:url>">PM2.5</a></td></tr>
+    <tr><td><a href="<s:url action="hrefAction" method="coQuery"></s:url> ">CO</a> </td></tr>
+    <tr><td><a href="<s:url action="hrefAction" method="noQuery"></s:url> ">NO</a> </td></tr>
 </table>
 
 </body>

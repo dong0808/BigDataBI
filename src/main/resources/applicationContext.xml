@@ -10,7 +10,7 @@
           p:driverClass="com.mysql.jdbc.Driver"
           p:jdbcUrl="jdbc:mysql://localhost:3306/sshtest"
           p:user="root"
-          p:password="jdd19930808"
+          p:password="hadoop"
           p:maxPoolSize="40"
           p:minPoolSize="1"
           p:initialPoolSize="2"
@@ -26,6 +26,7 @@
                 <value>BasicData.hbm.xml</value>
                 <value>Permission.hbm.xml</value>
                 <value>WaterTable.hbm.xml</value>
+                <value>TempertureTable.hbm.xml</value>
             </list>
         </property>
         <!-- 定义Hibernate的SessionFactory的属性 -->
@@ -80,6 +81,11 @@
     <bean id="waterTableDao" class="com.hfut.zngl.dao.Impl.WaterTableDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
+
+    <bean id="tempertureTableDao" class="com.hfut.zngl.dao.Impl.TempertureTableDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
     <!--用户服务层实现-->
     <bean id="userService" class="com.hfut.zngl.service.Impl.UserServiceImpl">
         <property name="userDao" ref="userDao"></property>
@@ -91,6 +97,10 @@
 
     <bean id="basicDataService" class="com.hfut.zngl.service.Impl.BasicDataServiceImpl">
         <property name="basicDataDao" ref="basicDataDao"></property>
+    </bean>
+
+    <bean id="tempertureTableService" class="com.hfut.zngl.service.Impl.TempertureTableServiceImpl">
+        <property name="tempertureTableDao" ref="tempertureTableDao"></property>
     </bean>
 
     <bean id="waterTableService" class="com.hfut.zngl.service.Impl.WaterTableServiceImpl">
@@ -131,7 +141,10 @@
     <bean id="countAction" class="com.hfut.zngl.action.CountAction">
         <property name="stationService" ref="stationService"/>
         <property name="waterTableService" ref="waterTableService"/>
+        <property name="tempertureTableService" ref="tempertureTableService"></property>
     </bean>
+
+
 
 
 </beans>

@@ -55,9 +55,11 @@ public class QueryInfoAction extends ActionSupport {
             return "precipitation";
         }else if(dataType.equals("temperture")){
             return "temperture";
-        }else{
+        }else if(dataType.equals("pm")){
             return "pm";
-        }
+        }else if(dataType.equals("co")){
+            return "co";
+        }else return "no";
     }
 
 

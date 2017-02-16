@@ -91,6 +91,8 @@
             <result name="precipitation">content/queryPage/precipitationPage.jsp</result>
             <result name="temperture">content/queryPage/temperturePage.jsp</result>
             <result name="pm">content/queryPage/pmPage.jsp</result>
+            <result name="co">content/queryPage/coPage.jsp</result>
+            <result name="no">content/queryPage/noQuery.jsp</result>
         </action>
 
 
@@ -112,6 +114,12 @@
             <result name="pm" type="json">
                 <param name="root">jsonResult</param>
             </result>
+            <result name="co" type="json">
+                <param name="root">jsonResult</param>
+            </result>
+            <result name="no" type="json">
+                <param name="root">jsonResult</param>
+            </result>
         </action>
         <action name="countAction" class="com.hfut.zngl.action.CountAction">
             <!--suppress Struts2ModelInspection -->
@@ -124,6 +132,16 @@
             </result>
             <!--suppress Struts2ModelInspection -->
             <result name="hz" type="json">
+                <param name="root">jsonResult</param>
+            </result>
+            <!--suppress Struts2ModelInspection -->
+            <result name="ttb" type="json">
+                <param name="root">jsonResult</param>
+            </result>
+            <result name="thb" type="json">
+                <param name="root">jsonResult</param>
+            </result>
+            <result name="thz" type="json">
                 <param name="root">jsonResult</param>
             </result>
 

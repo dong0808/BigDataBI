@@ -15,6 +15,10 @@ public class BasicData implements Serializable{
     private double max_temperture;
     private double min_temperture;
     private double PM;
+    private double CO;
+    private double NO;
+
+
 
     public int getID() {
         return ID;
@@ -78,5 +82,21 @@ public class BasicData implements Serializable{
 
     public void setPM(double PM) {
         this.PM = PM;
+    }
+
+    public double getCO() {
+        return CO;
+    }
+
+    public void setCO(double CO) {
+        this.CO = CO;
+    }
+
+    public double getNO() {
+        return NO;
+    }
+
+    public void setNO(double NO) {
+        this.NO = NO;
     }
 }

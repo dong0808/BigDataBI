@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.hfut.zngl.entity.TempertureTable" table="temperturetable">
+        <composite-id name="tempertureTableID" class="com.hfut.zngl.entity.TempertureTableID">
+            <key-property name="timeID" column="timeID" type="java.lang.String"/>
+            <key-property name="station_id" column="station_id" type="java.lang.String"/>
+        </composite-id>
+        <property name="tempHigh" type="float"/>
+        <property name="tempLow" type="float"/>
+
+    </class>
+</hibernate-mapping>

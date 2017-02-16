@@ -103,7 +103,6 @@ public class QueryDataAction extends ActionSupport {
         return "temp";
     }
 
-
     public String precipitationQuery() throws Exception {
         List<Double> preList = new ArrayList<Double>();
         List<String> dataList = new ArrayList<String>();
@@ -146,5 +145,49 @@ public class QueryDataAction extends ActionSupport {
 
         jsonResult = JSONArray.fromObject(resultMap).toString();
         return "pm";
+    }
+
+    public String coQuery() throws Exception {
+        List<Double> coList = new ArrayList<Double>();
+        List<String> dataList = new ArrayList<String>();
+        Station stationTemp = stationService.findByName(station_name);
+        String stationID = stationTemp.getStation_id();
+        List<BasicData> list = basicDataService.findAllByIDAndDate(stationID, startDate, endDate);
+        for (BasicData b : list) {
+            coList.add(b.getCO());
+            dataList.add(b.getObservation_time());
+            //System.out.println(b.getPrecipitation());
+        }
+//        System.out.print();
+        resultMap = new HashMap<String, Object>();
+        resultMap.put("coResult", coList);
+        resultMap.put("dateResult", dataList);
+        resultMap.put("stationName", station_name);
+
+
+        jsonResult = JSONArray.fromObject(resultMap).toString();
+        return "co";
+    }
+
+    public String noQuery() throws Exception{
+        List<Double> noList = new ArrayList<Double>();
+        List<String> dataList = new ArrayList<String>();
+        Station stationTemp = stationService.findByName(station_name);
+        String stationID = stationTemp.getStation_id();
+        List<BasicData> list = basicDataService.findAllByIDAndDate(stationID, startDate, endDate);
+        for (BasicData b : list) {
+            noList.add(b.getNO());
+            dataList.add(b.getObservation_time());
+            //System.out.println(b.getPrecipitation());
+        }
+//        System.out.print();
+        resultMap = new HashMap<String, Object>();
+        resultMap.put("noResult", noList);
+        resultMap.put("dateResult", dataList);
+        resultMap.put("stationName", station_name);
+
+
+        jsonResult = JSONArray.fromObject(resultMap).toString();
+        return "no";
     }
 }
