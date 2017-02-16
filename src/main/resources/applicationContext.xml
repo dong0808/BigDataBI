@@ -8,7 +8,7 @@
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
           destroy-method="close"
           p:driverClass="com.mysql.jdbc.Driver"
-          p:jdbcUrl="jdbc:mysql://localhost:3306/sshtest"
+          p:jdbcUrl="jdbc:mysql://localhost:3306/project"
           p:user="root"
           p:password="hadoop"
           p:maxPoolSize="40"
