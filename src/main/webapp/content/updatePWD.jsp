@@ -19,7 +19,12 @@
     <script type="text/javascript" src="/Js/bootstrap.js"></script>
     <script type="text/javascript" src="/Js/ckform.js"></script>
     <script type="text/javascript" src="/Js/common.js"></script>
-
+    <!--ajaxUtils是使用ajax来异步发送请求的文件-->
+    <script type="text/javascript" src="/assets1/js/ajaxUtils.js"></script>
+    <!--checkMessage是用来验证输入的js文件-->
+    <script src="/assets1/js/checkMessage.js"></script>
+    <!--utils是将验证的抽象方法将它抽取出来另外置于一个文件-->
+    <script type="text/javascript" src="/assets1/js/utils.js"></script>
     <style type="text/css">
         body {
             padding-bottom: 40px;
@@ -45,15 +50,16 @@
     <table class="table table-bordered table-hover m10">
         <tr>
             <td class="tableleft">旧密码</td>
-            <td><input type="text" name="oldPWD"/></td>
+            <td><input type="password" name="oldPWD" onblur="checkPassword(this)"/><span id="passwordMsg" class="error"></span><br />
+            </td>
         </tr>
         <tr>
             <td class="tableleft">新密码</td>
-            <td><input type="text" name="newPWD1"/></td>
+            <td><input type="password" name="newPWD1"/></td>
         </tr>
         <tr>
             <td class="tableleft">确认新密码</td>
-            <td><input type="text" name="newPWD2"/></td>
+            <td><input type="password" name="newPWD2"/></td>
         </tr>
 
         <tr>
