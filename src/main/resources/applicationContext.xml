@@ -5,6 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
+    <!-- 数据库名称、密码配置 -->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
           destroy-method="close"
           p:driverClass="com.mysql.jdbc.Driver"
@@ -16,6 +17,7 @@
           p:initialPoolSize="2"
           p:maxIdleTime="20"/>
 
+    <!-- Session及实体映射关系配置 -->
     <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <!--<property name="packagesToScan" value="cn.gtmap.ssh.entity."></property>-->
@@ -27,6 +29,7 @@
                 <value>Permission.hbm.xml</value>
                 <value>WaterTable.hbm.xml</value>
                 <value>TempertureTable.hbm.xml</value>
+                <value>PMTable.hbm.xml</value>
             </list>
         </property>
         <!-- 定义Hibernate的SessionFactory的属性 -->
@@ -65,86 +68,75 @@
 
     <!--拦截器实现-->
     <bean id="loginInterceptor" class="com.hfut.zngl.filter.LoginInterceptor"></bean>
+
+
     <!--数据库dao层实现-->
     <bean id="userDao" class="com.hfut.zngl.dao.Impl.UserDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
-
     <bean id="stationDao" class="com.hfut.zngl.dao.Impl.StationDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
-
     <bean id="basicDataDao" class="com.hfut.zngl.dao.Impl.BasicDataDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
-
     <bean id="waterTableDao" class="com.hfut.zngl.dao.Impl.WaterTableDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
-
     <bean id="tempertureTableDao" class="com.hfut.zngl.dao.Impl.TempertureTableDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
-
-    <!--用户服务层实现-->
-    <bean id="userService" class="com.hfut.zngl.service.Impl.UserServiceImpl">
-        <property name="userDao" ref="userDao"></property>
-    </bean>
-
-    <bean id="stationService" class="com.hfut.zngl.service.Impl.StationServiceImpl">
-        <property name="stationDao" ref="stationDao"></property>
-    </bean>
-
-    <bean id="basicDataService" class="com.hfut.zngl.service.Impl.BasicDataServiceImpl">
-        <property name="basicDataDao" ref="basicDataDao"></property>
-    </bean>
-
-    <bean id="tempertureTableService" class="com.hfut.zngl.service.Impl.TempertureTableServiceImpl">
-        <property name="tempertureTableDao" ref="tempertureTableDao"></property>
-    </bean>
-
-    <bean id="waterTableService" class="com.hfut.zngl.service.Impl.WaterTableServiceImpl">
-        <property name="waterTableDao" ref="waterTableDao"></property>
-    </bean>
-    <!--登陆处理-->
-    <bean id="loginAction" class="com.hfut.zngl.action.LoginAction">
-        <property name="userService" ref="userService"></property>
-    </bean>
-
-    <bean id="addUserAction" class="com.hfut.zngl.action.AddUserAction">
-        <property name="userService" ref="userService"></property>
-    </bean>
-
-    <bean id="updateUserAction" class="com.hfut.zngl.action.UpdateUserAction">
-        <property name="userService" ref="userService"></property>
-    </bean>
-
-    <bean id="userAction" class="com.hfut.zngl.action.userAction">
-        <property name="userService" ref="userService"></property>
-    </bean>
-
-    <bean id="updatePWDAction" class="com.hfut.zngl.action.updatePWDAction">
-        <property name="userService" ref="userService"></property>
-    </bean>
-
-    <bean id="permission" class="com.hfut.zngl.util.CheckPermission">
+    <bean id="pmTableDao" class="com.hfut.zngl.dao.Impl.PMTableDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
 
-    <bean id="queryInfo" class="com.hfut.zngl.action.QueryInfoAction"></bean>
 
+    <!--用户Service层实现-->
+    <bean id="userService" class="com.hfut.zngl.service.Impl.UserServiceImpl">
+        <property name="userDao" ref="userDao"></property>
+    </bean>
+    <bean id="stationService" class="com.hfut.zngl.service.Impl.StationServiceImpl">
+        <property name="stationDao" ref="stationDao"></property>
+    </bean>
+    <bean id="basicDataService" class="com.hfut.zngl.service.Impl.BasicDataServiceImpl">
+        <property name="basicDataDao" ref="basicDataDao"></property>
+    </bean>
+    <bean id="tempertureTableService" class="com.hfut.zngl.service.Impl.TempertureTableServiceImpl">
+        <property name="tempertureTableDao" ref="tempertureTableDao"></property>
+    </bean>
+    <bean id="pmTableService" class="com.hfut.zngl.service.Impl.PMTableServiceImpl">
+        <property name="pmTableDao" ref="pmTableDao"></property>
+    </bean>
+    <bean id="waterTableService" class="com.hfut.zngl.service.Impl.WaterTableServiceImpl">
+        <property name="waterTableDao" ref="waterTableDao"></property>
+    </bean>
+    <bean id="loginAction" class="com.hfut.zngl.action.LoginAction">
+        <property name="userService" ref="userService"></property>
+    </bean>
+    <bean id="addUserAction" class="com.hfut.zngl.action.AddUserAction">
+        <property name="userService" ref="userService"></property>
+    </bean>
+    <bean id="updateUserAction" class="com.hfut.zngl.action.UpdateUserAction">
+        <property name="userService" ref="userService"></property>
+    </bean>
+    <bean id="userAction" class="com.hfut.zngl.action.userAction">
+        <property name="userService" ref="userService"></property>
+    </bean>
+    <bean id="updatePWDAction" class="com.hfut.zngl.action.updatePWDAction">
+        <property name="userService" ref="userService"></property>
+    </bean>
+    <bean id="permission" class="com.hfut.zngl.util.CheckPermission">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="queryInfo" class="com.hfut.zngl.action.QueryInfoAction"></bean>
     <bean id="queryDataAction" class="com.hfut.zngl.action.QueryDataAction">
         <property name="stationService" ref="stationService"/>
         <property name="basicDataService" ref="basicDataService"/>
     </bean>
-
     <bean id="countAction" class="com.hfut.zngl.action.CountAction">
         <property name="stationService" ref="stationService"/>
         <property name="waterTableService" ref="waterTableService"/>
         <property name="tempertureTableService" ref="tempertureTableService"></property>
+        <property name="pmTableService" ref="pmTableService"></property>
     </bean>
-
-
-
-
 </beans>
