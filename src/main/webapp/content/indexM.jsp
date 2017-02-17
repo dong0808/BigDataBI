@@ -94,6 +94,13 @@
                          {id:'215',text:'环比统计',href:'content/countPage/tempertureHB.jsp'},
                          {id:'216',text:'汇总统计',href:'content/countPage/tempertureHZ.jsp'}]
                     },
+                    {text:'PM2.5',
+                        items:[
+                            {id:'217',text:'同比统计',href:'content/countPage/pmTB.jsp'},
+                            {id:'218',text:'环比统计',href:'content/countPage/pmHB.jsp'},
+                            {id:'219',text:'汇总统计',href:'content/countPage/pmHZ.jsp'}]
+
+                    },
                     {
                         text:'灾害统计',
                         items:[

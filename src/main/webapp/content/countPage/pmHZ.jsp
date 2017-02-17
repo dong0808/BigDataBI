@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: jiakai
-  Date: 2017/2/13
-  Time: 19:59
+  Date: 2017/2/17
+  Time: 10:52
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html; charset=UTF-8" %>
@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>温度汇总</title>
+    <title>PM2.5汇总</title>
 
     <link href="/assets1/css/bs3/dpl.css" rel="stylesheet">
     <link href="/assets1/css/bs3/bui.css" rel="stylesheet">
@@ -22,9 +22,9 @@
 
 <div class="row" align="center">
     <div class="span24">
-        <div class="panel-header"><h3 align="center"><font color="#6495ed">温度汇总信息查询</font></h3></div>
+        <div class="panel-header"><h3 align="center"><font color="#6495ed">PM2.5汇总信息查询</font></h3></div>
         <form id="searchForm"   class="form-horizontal" tabindex="0" style="outline: none;">
-            <%--<input type="hidden" name="tempertureQuery" value="pq"/>--%>
+            <%--<input type="hidden" name="precipitationQuery" value="pq"/>--%>
             <div class="row">
                 <div class="control-group span8">
                     <label class="control-label"><s>*</s>地市名称：</label>
@@ -127,7 +127,7 @@
             var formData = $("#searchForm").serialize();
             console.log(formData);
             $.ajax({
-                url:'countAction!tempertureHZ',
+                url:'countAction!pmHZ',
                 type:'POST',
                 data:formData,
                 dataType:'json',
@@ -184,7 +184,7 @@
                         }
                     },
                     data:[
-                        {value:total, name:'地市总的温度之和', selected:true},
+                        {value:total, name:'地市总的PM2.5之和', selected:true},
 
                     ]
                 },
