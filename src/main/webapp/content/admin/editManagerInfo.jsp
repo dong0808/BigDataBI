@@ -24,7 +24,12 @@
     <script type="text/javascript" src="/Js/bootstrap.js"></script>
     <script type="text/javascript" src="/Js/ckform.js"></script>
     <script type="text/javascript" src="/Js/common.js"></script>
-
+    <!--ajaxUtils是使用ajax来异步发送请求的文件-->
+    <script type="text/javascript" src="/assets1/js/ajaxUtils.js"></script>
+    <!--checkMessage是用来验证输入的js文件-->
+    <script src="/assets1/js/checkMessage.js"></script>
+    <!--utils是将验证的抽象方法将它抽取出来另外置于一个文件-->
+    <script type="text/javascript" src="/assets1/js/utils.js"></script>
     <style type="text/css">
         body {
             padding-bottom: 40px;
@@ -46,7 +51,35 @@
     </style>
 </head>
 <body>
-<form action="updateUserAction!updateManager" method="POST" class="definewidth m20">
+<script type="text/javascript">
+function validate()
+{
+    var inputList = document.getElementsByTagName("input");
+
+    for(i=0;i<inputList.length;i++) {
+        console.log(inputList[i].value);
+    }
+    username= inputList[1].value;
+    if(username=="") {
+        alert("请输入用户名！");
+        return false;
+    }
+    tel = inputList[2].value;
+    if(tel=="")
+    {
+        alert("请输入电话号码！");
+        return false;
+    }
+    if(tel.length<11)
+    {
+        alert("请输入正确的电话号码！")
+        return false;
+    }
+    else{
+        return true;}
+}
+</script>
+<form name="edit" action="updateUserAction!updateManager" method="POST" class="definewidth m20" onSubmit="return validate()">
     <table class="table table-bordered table-hover m10">
         <tr>
             <td class="tableleft">用户ID</td>
@@ -77,7 +110,7 @@
         </tr>
         <tr>
             <td class="tableleft">电话</td>
-            <td><input type="text" name="user.phone" value="<%=request.getAttribute("phone")%>"/></td>
+            <td><input type="text" name="user.phone" value="<%=request.getAttribute("phone")%>"onblur="checkPhone(this)"/><span id="phoneMsg" class="error"></span><br/></td>
         </tr>
 
         <
