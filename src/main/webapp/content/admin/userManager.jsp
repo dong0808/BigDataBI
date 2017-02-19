@@ -15,7 +15,7 @@
 <table>
     <th>选择管理项目</th>
     <tr><td><a href="<s:url action="userAction" method="userQuery"/>">查询用户</a></td></tr>
-    <tr><td><a href="<s:url action="userAction" method="userAdd"/>">添加用户</a></td></td></tr>
+    <tr><td><a href="<s:url action="userAction" method="userAdd"/>">添加用户</a></td></tr>
     <tr><td><a href="<s:url action="userAction" method="managerInfoEdit"/>">修改个人信息</a></td></tr>
     <tr><td><a href="<s:url action="userAction" method="updatePWD"/>">修改密码</a></td></tr>
 </table>

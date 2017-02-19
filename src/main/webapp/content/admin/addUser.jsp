@@ -44,19 +44,72 @@
     </style>
 </head>
 <body>
-<form id="adduser" action="addUser" method="POST" class="definewidth m20">
+<script src="/assets1/js/jquery-1.8.1.min.js"></script>
+
+<script type="text/javascript">
+    function validate(){
+        var inputList = document.getElementsByTagName("input");
+
+        for(i=0;i<inputList.length;i++) {
+            console.log(inputList[i].value);
+        }
+        userid = inputList[0].value;
+        if(userid =="")
+        {
+            alert("请输入用户编号！");
+            return false;
+        }
+        if(uesrid.length<3)
+        {
+            alert("用户编号格式错误！");
+            return false;
+        }
+        username = inputList[1].value;
+        if(username =="")
+        {
+            alert("请输入用户名！");
+            return false;
+        }
+        password = inputList[2].value;
+        if(password =="")
+        {
+            alert("请输入密码！");
+            return false;
+        }
+        if(password.length<5)
+        {
+            alert("密码强度不足！");
+            return false;
+        }
+        tel = inputList[3].value;
+        if(tel == "")
+        {
+            alert("请输入电话号码！");
+            return false;
+        }
+        if(tel.length<11)
+        {
+            alert("请输入正确的电话格式！");
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+</script>
+<form id="adduser" name="addUser" action="addUser" method="POST" class="definewidth m20" onSubmit="return validate()">
     <table class="table table-bordered table-hover m10">
         <tr>
             <td class="tableleft">用户ID</td>
-            <td><input type="text" name="user.userID"/></td>
+            <td><input type="text" name="user.userID" onblur="checkUserId(this)"/><span id="userIdMsg" class="error"></span><br/></td>
         </tr>
         <tr>
             <td class="tableleft">用户名</td>
-            <td><input type="text" name="user.userName" onblur="checkUsername(this)"/><span id="usernameMsg" class="error"></span><br/></td>
+            <td><input type="text" name="user.userName" value="" onblur="checkUsername(this)"/><span id="usernameMsg" class="error"></span><br/></td>
         </tr>
         <tr>
             <td class="tableleft">密码</td>
-            <td><input type="password" name="user.pwd" onblur="checkPassword(this)"/><span id="passwordMsg" class="error"></span><br/></td>
+            <td><input type="password" name="user.pwd" value="" onblur="checkPassword(this)"/><span id="passwordMsg" class="error"></span><br/></td>
         </tr>
 
         <tr>
@@ -80,7 +133,7 @@
         </tr>
         <tr>
             <td class="tableleft">电话</td>
-            <td><input type="text" name="user.phone"/></td>
+            <td><input type="text" name="user.phone"onblur="checkPhone(this)"/><span id="phoneMsg" class="error"></span><br/></td>
         </tr>
 
         <
